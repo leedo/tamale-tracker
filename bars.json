@@ -1,0 +1,234 @@
+[
+  {
+    name: "the whistler",
+    alias: []
+  },
+  {
+    name: "map room",
+    alias: ["the map room"]
+  },
+  {
+    name: "rainbo club",
+    alias: ["rainbo", "rainbow"]
+  },
+  {
+    name: "ten cat tavern",
+    alias: ["ten cat", "the ten cat"]
+  },
+  {
+    name: "the gingerman tavern",
+    alias: ["gingerman", "the gingerman"]
+  },
+  {
+    name: "empty bottle",
+    alias: ["the empty bottle"]
+  },
+  {
+    name: "green eye lounge",
+    alias: ["green eye"]
+  },
+  {
+    name: "bob inn",
+    alias: ["the bob inn"]
+  },
+  {
+    name: "cole's",
+    alias: []
+  },
+  {
+    name: "the long room",
+    alias: ["long room"]
+  },
+  {
+    name: "happy village",
+    alias: ["happy"]
+  },
+  {
+    name: "club foot",
+    alias ["foot", "the club foot"]
+  },
+  {
+    name: "will's northwoods inn",
+    alias: ["will's", "northwoods inn", "will's northwoods"]
+  },
+  {
+    name: "the mutiny corp",
+    alias: ["mutiny"]
+  },
+  {
+    name: "augie's",
+    alias: []
+  },
+  {
+    name: "whirlaway lounge",
+    alias: ["whirlaway"]
+  }
+  {
+    name: "the california clipper",
+    alias: ["clipper", "cali clipper", "california clipper", "cal clipper"]
+  },
+  {
+    name: "gold star",
+    alias: ["goldstar"]
+  },
+  {
+    name: "goldies bar",
+    alias: ["goldies"]
+  },
+  {
+    name: "phyllis' musical inn",
+    alias: ["phyllis"]
+  },
+  {
+    name: "innertown pub",
+    alias: ["inner town"]
+  },
+  {
+    name: "charleston",
+    alias: ["the charleston"]
+  },
+  {
+    name: "blind robin",
+    alias: ["the blind robin"]
+  },
+  {
+    name: "the corner",
+    alias: ["corner bar", "the corner bar"]
+  },
+  {
+    name: "j&m tap",
+    alias: ["j&m", "squirrel", "secret squirrel"]
+  },
+  {
+    name: "liars club",
+    alias: ["liars"]
+  },
+  {
+    name: "quenchers saloon",
+    alias: ["quenchers"]
+  },
+  {
+    name: "beachwood inn",
+    alias: ["beachwood"]
+  },
+  {
+    name: "lava lounge",
+    alias: ["lava"]
+  },
+  {
+    name: "the flat iron",
+    alias: ["flat iron"]
+  },
+  {
+    name: "shoes pub",
+    alias: ["shoes"]
+  },
+  {
+    name: "bar deville",
+    alias: "deville"
+  },
+  {
+    name: "hungry brain",
+    alias: []
+  },
+  {
+    name: "cody's public house",
+    alias: ["cody's"]
+  },
+  {
+    name: "archie's iowa and rockwell tavern",
+    alias: ["archie's"]
+  },
+  {
+    name: "fiv star bar",
+    alias: ["five star"]
+  },
+  {
+    name: "the continental",
+    alias: ["continental"]
+  },
+  {
+    name: "the hideout",
+    alias: ["hideout", "h/o"]
+  },
+  {
+    name: "bon v",
+    alias: []
+  },  
+  {
+    name: "hüettenbar",
+    alias: ["huettenbar"]
+  },
+  {
+    name: "ricochet's",
+    alias: []
+  },
+  {
+    name: "guthrie's tavern",
+    alias: ["guthries"]
+  },
+  {
+    name: "danny's",
+    alias: []
+  }
+  {
+    name: "four treys tavern",
+    alias: ["four treys"]
+  },
+  {
+    name: "the chipp inn",
+    alias: ["chipp inn", "chip"]
+  },
+  {
+    name: "the local option",
+    alias: ["local option"]
+  },
+  {
+    name: "burke's web pub",
+    alias: ["burkes web"]
+  },
+  {
+    name: "the ashland",
+    alias: []
+  },
+  {
+    name: "lemmings",
+    alias: []
+  },
+  {
+    name: "l and l tavern",
+    alias: ["l&l"]
+  },
+  {
+    name: "timber lanes",
+    alias: []
+  },
+  {
+    name: "old town ale house",
+    alias: []
+  },
+  {
+    name: "mulligans public house",
+    alias: ["mulligans"]
+  },
+  {
+    name: "nicks beer garden",
+    alias: ["nicks"]
+  },
+  {
+    name: "wrightwood tap",
+    alias: []
+  },
+  {
+    name: "swig",
+    alias: []
+  },
+  {
+    name: "rite liquor",
+    alias: []
+  },
+  {
+    name: "lottie's pub",
+    alias: ["lotties"]
+  }
+] 
