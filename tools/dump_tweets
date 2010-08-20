@@ -43,10 +43,10 @@ my $nt = Net::Twitter::Lite->new(
 );
 
 my $insert_sth = $dbh->prepare("INSERT INTO updates (id, body, date) VALUES (?, ?, ?)");
-my $oldest_id = get_oldest_id();
-my $newest_id = get_newest_id();
 
+my $oldest_id = get_oldest_id();
 print STDERR "getting tweets before $oldest_id\n";
+
 while (my @tweets = get_tweets(max_id => $oldest_id - 1)) {
   for my $status (@tweets) {
     $insert_sth->execute($status->{id}, $status->{text}, $status->{created_at});
@@ -57,7 +57,9 @@ while (my @tweets = get_tweets(max_id => $oldest_id - 1)) {
   sleep DELAY;
 }
 
+my $newest_id = get_newest_id();
 print STDERR "getting tweets since $newest_id\n";
+
 while (my @tweets = get_tweets(since_id => $newest_id)) {
   for my $status (@tweets) {
     $insert_sth->execute($status->{id}, $status->{text}, $status->{created_at});

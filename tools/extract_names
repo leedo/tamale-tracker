@@ -8,6 +8,8 @@ use DBI;
 use Data::Dump qw/dump/;
 use Path::Class;
 use Getopt::Long;
+use JSON;
+use Date::Parse;
 
 my %opt = (dbfile => file("$FindBin::Bin/../tweets.db"));
 
@@ -19,6 +21,8 @@ my $dbh = DBI->connect("dbi:SQLite:dbname=$opt{dbfile}","","");
 
 my $sth = $dbh->prepare("SELECT * FROM updates ORDER BY id DESC");
 $sth->execute;
+
+my @matches;
 
 while($row = $sth->fetchrow_arrayref) {
   if ($row->[2] =~ /.*\b(?:at|left|into|leaving) ([a-z][^~\.!@;,1-9()\-]+)/i) {
@@ -48,7 +52,13 @@ while($row = $sth->fetchrow_arrayref) {
     $bar =~ s/^\s+//;
     $bar =~ s/\s+$//;
 
-    print "$row->[2]\n";
-    print " => $bar\n\n";
+    push @matches, {
+      location => $bar,
+      text     => $row->[2],
+      date     => str2time($row->[0]),
+      id       => $row->[1],
+    };
   }
 }
+
+print to_json \@matches, {pretty => 1, utf8 => 1};
