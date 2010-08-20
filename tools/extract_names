@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+
+use FindBin;
+use lib "$FindBin::Bin/../extlib/lib/perl5";
+use local::lib "$FindBin::Bin/../extlib";
+
+use DBI;
+use Data::Dump qw/dump/;
+use Path::Class;
+use Getopt::Long;
+
+my %opt = (dbfile => file("$FindBin::Bin/../tweets.db"));
+
+GetOptions (
+  "dbfile=s"   => \$opt{dbfile},
+);
+
+my $dbh = DBI->connect("dbi:SQLite:dbname=$opt{dbfile}","","");
+
+my $sth = $dbh->prepare("SELECT * FROM updates ORDER BY id ASC");
+$sth->execute;
+
+while($row = $sth->fetchrow_arrayref) {
+  if ($row->[2] =~ /(?:at|left) (.+?)[~\.!@]/i) {
+    print "$1 ($row->[0])\n";
+  }
+}
