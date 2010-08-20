@@ -46,7 +46,8 @@ my $insert_sth = $dbh->prepare("INSERT INTO updates (id, body, date) VALUES (?, 
 my $oldest_id = get_oldest_id();
 my $newest_id = get_newest_id();
 
-while (my @tweets = get_tweets(max_id => $oldest_id)) {
+print STDERR "getting tweets before $oldest_id\n";
+while (my @tweets = get_tweets(max_id => $oldest_id - 1)) {
   for my $status (@tweets) {
     $insert_sth->execute($status->{id}, $status->{text}, $status->{created_at});
     $oldest_id = $status->{id} unless $oldest_id and $status->{id} > $oldest_id;
@@ -56,6 +57,7 @@ while (my @tweets = get_tweets(max_id => $oldest_id)) {
   sleep DELAY;
 }
 
+print STDERR "getting tweets since $newest_id\n";
 while (my @tweets = get_tweets(since_id => $newest_id)) {
   for my $status (@tweets) {
     $insert_sth->execute($status->{id}, $status->{text}, $status->{created_at});

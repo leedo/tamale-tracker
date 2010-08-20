@@ -17,11 +17,38 @@ GetOptions (
 
 my $dbh = DBI->connect("dbi:SQLite:dbname=$opt{dbfile}","","");
 
-my $sth = $dbh->prepare("SELECT * FROM updates ORDER BY id ASC");
+my $sth = $dbh->prepare("SELECT * FROM updates ORDER BY id DESC");
 $sth->execute;
 
 while($row = $sth->fetchrow_arrayref) {
-  if ($row->[2] =~ /(?:at|left) (.+?)[~\.!@]/i) {
-    print "$1 ($row->[0])\n";
+  if ($row->[2] =~ /.*\b(?:at|left|into|leaving) ([a-z][^~\.!@;,1-9()\-]+)/i) {
+    my $bar = lc $1;
+
+    # skip if it ends with a ? or is begging
+    next if $bar =~ /\?/;
+    next if $bar =~ /\b(?:wants?|por favor)\b/;
+
+    # strip whitespace
+    $bar =~ s/^\s+//;
+    $bar =~ s/\s+$//;
+
+    # strip of time qualifiers
+    $bar =~ s/\b(?:right now|again|now|during|a while ago)\b.*//i;
+
+    # strip off neighborhood info
+    $bar =~ s/\b(?:in|at|on)\b.*//i;
+
+    # strip off any stupid extra info
+    $bar =~ s/\b(?:and )?(?:(?:he|hes|he's) )?(?:says|heading|headed|heading|for|got|with|http)\b.*//i;
+
+    # strip off any cheerfulness
+    $bar =~ s/\b(?:yay|and i(?:'m)?)\b.*//i;
+
+    # strip whitespace again
+    $bar =~ s/^\s+//;
+    $bar =~ s/\s+$//;
+
+    print "$row->[2]\n";
+    print " => $bar\n\n";
   }
 }

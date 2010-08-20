@@ -130,3 +130,25 @@ C<EXE_FILES: >
 
 =back
 
+=head2 Fri Aug 20 15:11:33 2010: C<Module> L<Data::Dump|Data::Dump>
+
+=over 4
+
+=item *
+
+C<installed into: /home/leedo/src/tamale-tracker/extlib/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 1.17>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
