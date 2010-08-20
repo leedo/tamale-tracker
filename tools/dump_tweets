@@ -1,0 +1,93 @@
+#!/usr/bin/perl
+
+use FindBin;
+use Net::Twitter::Lite;
+use DBI;
+use Getopt::Long;
+use Path::Class;
+use Data::Dump qw/dump/;
+
+use constant {
+  USERID => "tamaletracker",
+  DELAY  => 5,
+};
+
+my %opt = (dbfile => file("$FindBin::Bin/../tweets.db"));
+
+GetOptions (
+  "username=s" => \$opt{username},
+  "password=s" => \$opt{password},
+  "dbfile=s"   => \$opt{dbfile},
+  "create"     => \$opt{create},
+);
+
+$opt{create} = 1 unless -e $opt{dbfile};
+
+my $dbh = DBI->connect("dbi:SQLite:dbname=$opt{dbfile}","","");
+
+if ($opt{create}) {
+  my $create = "CREATE TABLE updates (date VARCHAR(32), id INT, body TEXT)";
+  $dbh->do($create);
+}
+
+if (!$opt{username} or !$opt{password}) {
+  die "need username and password options\n";
+}
+
+my $nt = Net::Twitter::Lite->new(
+  username => $opt{username},
+  password => $opt{password},
+);
+
+my $insert_sth = $dbh->prepare("INSERT INTO updates (id, body, date) VALUES (?, ?, ?)");
+my $oldest_id = get_oldest_id();
+my $newest_id = get_newest_id();
+
+while (my @tweets = get_tweets(max_id => $oldest_id)) {
+  for my $status (@tweets) {
+    $insert_sth->execute($status->{id}, $status->{text}, $status->{created_at});
+    $oldest_id = $status->{id} unless $oldest_id and $status->{id} > $oldest_id;
+  }
+
+  print STDERR "$oldest_id\n";
+  sleep DELAY;
+}
+
+while (my @tweets = get_tweets(since_id => $newest_id)) {
+  for my $status (@tweets) {
+    $insert_sth->execute($status->{id}, $status->{text}, $status->{created_at});
+    $newest_id = $status->{id} unless $newest_id and $status->{id} < $newest_id;
+  }
+
+  print STDERR "$newest_id\n";
+  sleep DELAY;
+}
+
+sub get_tweets {
+  my %filter = @_;
+  $filter{screen_name} = USERID;
+
+  # remove filters that are set to undef
+  %filter = map {$_ => $filter{$_}} grep {$filter{$_}} keys %filter;
+
+  # 3 retries and then give up
+  for (0 .. 3) { 
+    my $statuses = eval {$nt->user_timeline(\%filter)};
+    if (!$@) {
+      return @$statuses;
+    }
+    warn "retrying: $@\n";
+  }
+
+  die "could not connect to twitter\n";
+}
+
+sub get_oldest_id {
+  my $row = $dbh->selectrow_arrayref("SELECT id FROM updates ORDER BY id ASC");  
+  return ($row ? $row->[0] : ());
+}
+
+sub get_newest_id {
+  my $row = $dbh->selectrow_arrayref("SELECT id FROM updates ORDER BY id DESC");  
+  return ($row ? $row->[0] : ());
+}
