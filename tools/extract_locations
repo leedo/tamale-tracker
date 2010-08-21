@@ -12,5 +12,5 @@ use Tamale::Tracker;
 binmode(STDOUT, ":utf8");
 
 my $tracker = Tamale::Tracker->new(datadir => "$FindBin::Bin/../data");
-my $matches = $tracker->matching_tweets;
+my $matches = $tracker->matching_tweets_by_day;
 print to_json $matches, {pretty => 1};

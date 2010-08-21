@@ -6,6 +6,7 @@ use Net::Twitter::Lite;
 use Path::Class;
 use Date::Parse;
 use Storable qw/freeze thaw/;
+use DateTime;
 use JSON;
 use DBI;
 
@@ -262,6 +263,29 @@ sub matching_tweets {
   }
 
   return \@matches;
+}
+
+sub matching_tweets_by_day {
+  my $self = shift;
+  my $matches = $self->matching_tweets;
+
+  my %days;
+  my $one_day = DateTime::Duration->new(days => 1);
+
+  for my $match (@$matches) {
+    my $date = DateTime->from_epoch(epoch => $match->{date});
+
+    # count anything before 5AM as the previous day...
+    if ($date->hour < 5) {
+      $date -= $one_day;
+    }
+    $date->truncate(to => 'day');
+    
+    $match->{evening_of} = $date->ymd;
+    push @{$days{$date->ymd}}, $match;
+  }
+
+  return [map {$days{$_}} sort keys %days];
 }
 
 1;
