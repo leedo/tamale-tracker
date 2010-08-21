@@ -1,0 +1,34 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+use JSON;
+use FindBin;
+use Path::Class;
+use List::Util qw/sum first/;
+use Data::Dumper;
+
+my $locations = from_json file("$FindBin::Bin/../data/locations.json")->slurp;
+my $bars = from_json file("$FindBin::Bin/../data/bars.json")->slurp;
+my @table;
+my %lookup;
+
+for my $i (0 .. @$bars - 1) {
+  $lookup{$bars->[$i]{name}} = $i;
+  $table[$i] = [map {0} 0 .. @$bars - 1];
+}
+
+for my $day (@$locations) {
+  my $prev;
+  for my $loc (@$day) {
+    my $bar = $loc->{bar}{name};
+    if ($prev and $prev ne $bar) {
+      $table[$lookup{$prev}][$lookup{$bar}]++
+    }
+    $prev = $bar;
+  }
+}
+
+print join "\n", map {join " ", @$_} @table;
+print "\n";

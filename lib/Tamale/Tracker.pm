@@ -69,7 +69,9 @@ has cache => (
     my $self = shift;
     my $file = file($self->datadir."/tmp/match-cache");
     if (-e $file) {
-      return thaw scalar $file->slurp;
+      my $cache = eval { thaw scalar $file->slurp };
+      return $cache unless $@;
+      warn "could not load cache, continuing without it\n";
     }
     return {}
   }
@@ -160,6 +162,7 @@ sub get_newer_tweets {
   my $self = shift;
   print STDERR "looking for older tweets\n";
   while (my @tweets = $self->download_tweets(max_id => $self->max_id)) {
+    print STDERR " => got ".scalar @tweets." new tweets\n";
     for my $status (@tweets) {
       $self->add_tweet($status->{id}, $status->{text}, $status->{created_at});
     }
@@ -171,6 +174,7 @@ sub get_older_tweets {
   my $self = shift;
   print STDERR "looking for newer tweets\n";
   while (my @tweets = $self->download_tweets(since_id => $self->newest)) {
+    print STDERR "got ".scalar @tweets." new tweets\n";
     for my $status (@tweets) {
       $self->add_tweet($status->{id}, $status->{text}, $status->{created_at});
     }
