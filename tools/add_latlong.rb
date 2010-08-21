@@ -1,10 +1,24 @@
 #!/usr/bin/ruby
 
 require 'rubygems'
-require 'yelp'
 require 'json'
+require 'net/http'
+require 'CGI'
 
-yelpkey_fn = '.yelpkey'
+def get_latlong(street)
+  domain = "maps.google.com"
+  path = "/maps/api/geocode/json"
+  parameters = {
+    "address" => street + " Chicago, IL",
+    "sensor" => "false",
+  }
+  path += "?" + parameters.map do |parameter, value|
+    [parameter, CGI.escape(value)].join("=")
+  end.join("&")
+  result = JSON.parse(Net::HTTP.get domain, path)
+  result['results'][0]['geometry']['location']
+end
+
 bar_fn = '../data/bars.json'
 
 # Get Bar Data
@@ -26,16 +40,6 @@ rescue
   raise "Can't parse bar data for some reason."
 end
   
-
-# Put your API key in a file in this directory called .yelpkey
-begin
-  key = File.open(yelpkey_fn, 'r').gets
-rescue
-  raise "Can't find #{yelpkey_fn}, make it."
-end
-
-y = Yelp.new(key)
-
 puts "Steppin'"
 
 bar_data.each do |b|
@@ -44,27 +48,22 @@ bar_data.each do |b|
     address = b['street'] + ", Chicago, IL"
     name = b['name']
     # Have we already asked yelp about this place?
-    next if b['neighborhood']
+    next if b['location']
     # Ok, so there's no neighborhood for this place in the JSON
     #  nor have we got a neighborhood for it from Yelp during
     #  this session, lets ask yelp about it.
     begin
-      neighborhood = y.neighborhood_search address
+      geodata = get_latlong address
     rescue
       puts "Something insane happened...lets get out of here"
       break
     end
     # Update bar structure
-    b['neighborhood'] = neighborhood
-    puts "Asked yelp for neighborhood for #{name} and got #{neighborhood}, storing."
-  else
-    puts "No street  for #{b['name']}"
+    b['location'] = geodata
+    puts "Asked Google for geolocation for #{name} and got #{geodata.inspect}, storing."
   end
 end
 
-# Once we're done, we can write out the bar JSON and it will let us
-# progressively bring in neighborhoods for places we haven't asked
-# yelp about yet.
 bar_f = File.open bar_fn, 'w' do |f|
   puts "Dumping modified bar structure"
   bar_json = JSON.pretty_generate bar_data

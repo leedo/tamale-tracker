@@ -18,7 +18,10 @@ a bar from bars.json using the levenshtein distance.
 ###tools/add_neighborhoods.rb
 Will go through the known bars file. For bars that have street
 components and no known neighborhood, we will ask yelp if they
-know which neighborhood its in. 
+know which neighborhood its in.
+
+###tools/add_latlong.rb
+Goes through known bars and grabs the lat/long coords and stores.
 
 ###tools/yelp.rb
 A Yelp class that, so far, only supports querying for neighborhoods
