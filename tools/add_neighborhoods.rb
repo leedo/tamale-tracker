@@ -23,7 +23,6 @@ rescue
   raise "Can't parse locations data for some reason."
 end
   
-puts locations_data[0].inspect
 
 # Put your API key in a file in this directory called .yelpkey
 begin
@@ -34,5 +33,23 @@ end
 
 y = Yelp.new(key)
 
+place_cache = {}
 
-
+locations_data[0...2].each do |l|
+  if l['bar']['street']
+    street = l['bar']['street'] + ", Chicago, IL"
+    name = l['bar']['name']
+    # Have we already asked yelp about this place?
+    neighborhood = l['bar']['neighborhood'] ? l['bar']['neighborhood'] : nil
+    continue if neighborhood
+    # Is it in our session yelp cache?
+    if place_cache[name]
+      continue if place_cache[name]['neighborhood']
+    end
+    # Ok, so there's no neighborhood for this place in the JSON
+    #  nor have we got a neighborhood for it from Yelp during
+    #  this session, lets ask yelp about it.
+    neighborhood = y.neighborhood_search(street)
+    puts neighborhood
+  end
+end
