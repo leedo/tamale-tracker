@@ -175,7 +175,7 @@ sub closest_bar {
       my $dist = levenshtein_distance($guess, $name);
       if ($dist < $best_dist) {
         $best_dist = $dist;
-        $best_bar = $bar->{name};
+        $best_bar = $bar;
       }
     }
   }
@@ -223,7 +223,7 @@ sub matching_tweets {
 
       if ($bar = $self->closest_bar($bar)) {
         push @matches, {
-          location => $bar,
+          bar      => $bar,
           text     => $row->[2],
           date     => str2time($row->[0]),
           id       => $row->[1],
