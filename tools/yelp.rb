@@ -21,10 +21,11 @@ class Yelp
     raise "Please specify an API key" unless @api_key
     parameters["ywsid"] = @api_key
     paramlist = []
-    for parameter in parameters.keys
-      paramlist.push(["#{parameter}=#{CGI::escape(parameters[parameter])}"])
-    end
-    path += "?#{paramlist.join '&'}"
+
+    path += "?" + parameters.map do |parameter, value|
+      [parameter, CGI.escape(value)].join("=")
+    end.join("&")
+
     begin
       raw_result = Net::HTTP.get Yelp::api_domain, path
     rescue
