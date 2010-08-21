@@ -38,7 +38,6 @@ html { height: 100% }
       };
       
       setMarkers = function(map, locations) {
-        debugger;
         for (var i = 0, l = locations.length; i < l; i++) {
           var bar = locations[i];
           var myLatLng = new google.maps.LatLng(bar[1], bar[2]);
@@ -47,10 +46,16 @@ html { height: 100% }
               map: map,
               title: bar[0]
           });
+          google.maps.event.addListener(marker, 'click', function(m) {
+            return function(e){
+              var infowindow = new google.maps.InfoWindow({
+                  content: m.title
+              });
+              infowindow.open(map, m);
+            };
+          }(marker));
         }
-      };
-      
-      
+      };      
     </script>
   </head>
   <body onload="initialize()">
