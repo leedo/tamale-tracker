@@ -8,17 +8,20 @@ yelpkey_fn = '.yelpkey'
 locations_fn = '../data/locations.json'
 
 # Get Locations ready 
+puts "Reading in locations JSON file"
 begin
-  locations_f = File.open(locations_fn, 'r')
+  locations_f = File.open locations_fn, 'r'
 rescue
   raise "Can't find #{locations_fn}... what the heck?"
 end
 
 locations_data = ''
 locations_f.each_line { |l| locations_data += l }
+locations_f.close
 
+puts "Parsing JSON string into Ruby object"
 begin
-  locations_data = JSON.parse(locations_data)
+  locations_data = JSON.parse locations_data
 rescue
   raise "Can't parse locations data for some reason."
 end
@@ -33,9 +36,9 @@ end
 
 y = Yelp.new(key)
 
+puts "Steppin'"
 place_cache = {}
-
-locations_data[0...10].each do |l|
+locations_data[0...5].each do |l|
   # We can't do anything without a street location
   if l['bar']['street']
     street = l['bar']['street'] + ", Chicago, IL"
@@ -59,7 +62,7 @@ locations_data[0...10].each do |l|
     # Ok, so there's no neighborhood for this place in the JSON
     #  nor have we got a neighborhood for it from Yelp during
     #  this session, lets ask yelp about it.
-    neighborhood = y.neighborhood_search(street)
+    neighborhood = y.neighborhood_search street
     # Update huge locations structure
     l['bar']['neighborhood'] = neighborhood
     puts "Asked yelp for neighborhood for #{name} and got #{neighborhood}, storing."
@@ -72,3 +75,9 @@ end
 # Once we're done, we can write out the locations JSON and it will let us
 # progressively bring in location names for places we haven't asked
 # yelp about yet.
+# Get Locations ready 
+locations_f = File.open locations_fn+'.tmp', 'w' do |f|
+  puts "Dumping modified locations structure to a temp file for now"
+  locations_json = JSON.pretty_generate locations_data
+  f.write locations_json
+end
