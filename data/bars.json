@@ -1,266 +1,397 @@
 [
   {
     "name": "the whistler",
+    "url": "http://www.yelp.com/biz/the-whistler-chicago",
     "alias": []
   },
   {
-    "name": "map room",
-    "alias": ["the map room"]
+    "name": "the map room",
+    "url" : "http://www.yelp.com/biz/the-map-room-chicago",
+    "street": "1949 N Hoyne Ave",
+    "alias": ["map room"]
   },
   {
     "name": "rainbo club",
+    "url" : "http://www.yelp.com/biz/rainbo-club-chicago",
+    "street": "1150 N Damen Ave",
     "alias": ["rainbo", "rainbow"]
   },
   {
     "name": "ten cat tavern",
+    "url":  "http://www.yelp.com/biz/ten-cat-tavern-chicago",
+    "street": "3931 N Ashland Avenue",
     "alias": ["ten cat", "the ten cat"]
   },
   {
     "name": "the gingerman tavern",
+    "url": "http://www.yelp.com/biz/the-gingerman-tavern-chicago",
+    "street": "3740 N Clark St",
     "alias": ["gingerman", "the gingerman"]
   },
   {
     "name": "empty bottle",
+    "url" : "http://www.yelp.com/biz/empty-bottle-chicago",
+    "street": "1035 N Western Ave",
     "alias": ["the empty bottle", "emptybottle"]
   },
   {
     "name": "green eye lounge",
+    "url" : "http://www.yelp.com/biz/green-eye-lounge-chicago",
+    "street": "2403 W Homer St",
     "alias": ["green eye", "greeneye", "the green eye"]
   },
   {
     "name": "bob inn",
+    "url" : "http://www.yelp.com/biz/bob-inn-chicago",
+    "street": "2609 W Fullerton Ave",
     "alias": ["the bob inn"]
   },
   {
     "name": "cole's",
+    "url": "http://www.yelp.com/biz/coles-chicago",
+    "street": "2338 N Milwaukee Ave",
     "alias": []
   },
   {
     "name": "the long room",
+    "url": "http://www.yelp.com/biz/the-long-room-chicago",
+    "street": "1612 W Irving Park Rd",
     "alias": ["long room"]
   },
   {
     "name": "happy village",
+    "url": "http://www.yelp.com/biz/happy-village-chicago",
+    "street": "1059 N Wolcott Ave",
     "alias": ["happy"]
   },
   {
     "name": "club foot",
+    "url": "http://www.yelp.com/biz/club-foot-chicago",
+    "street": "1824 W Augusta Blvd",
     "alias": ["foot", "the club foot"]
   },
   {
     "name": "will's northwoods inn",
+    "url": "http://www.yelp.com/biz/wills-northwoods-inn-chicago",
+    "street": "3030 N Racine Ave",
     "alias": ["will's", "northwoods inn", "will's northwoods"]
   },
   {
     "name": "the mutiny corp",
+    "url": "http://www.yelp.com/biz/the-mutiny-corp-chicago",
+    "street": "2428 N Western Ave",
     "alias": ["mutiny"]
   },
   {
     "name": "augie's",
+    "url": "http://www.yelp.com/biz/augies-chicago",
+    "street": "1721 W Wrightwood Ave",
     "alias": []
   },
   {
     "name": "whirlaway lounge",
+    "url": "http://www.yelp.com/biz/whirlaway-lounge-chicago",
+    "street": "3224 W. Fullerton",
     "alias": ["whirlaway"]
   },
   {
     "name": "the california clipper",
+    "url": "http://www.yelp.com/biz/the-california-clipper-chicago",
+    "street": "1002 N California Ave",
     "alias": ["clipper", "cali clipper", "california clipper", "cal clipper"]
   },
   {
     "name": "gold star",
+    "url": "http://www.yelp.com/biz/gold-star-bar-chicago",
+    "street": "1755 W Division St",
     "alias": ["goldstar"]
   },
   {
     "name": "goldies bar",
+    "url": "http://www.yelp.com/biz/goldies-bar-chicago",
+    "street": "3839 N Lincoln Ave",
     "alias": ["goldies"]
   },
   {
     "name": "phyllis' musical inn",
+    "url": "http://www.yelp.com/biz/phyllis-musical-inn-chicago",
+    "street": "1800 W Division St",
     "alias": ["phyllis"]
   },
   {
     "name": "innertown pub",
+    "url": "http://www.yelp.com/biz/innertown-pub-chicago",
+    "street": "1935 W Thomas St.",
     "alias": ["inner town"]
   },
   {
     "name": "charleston",
+    "url": "http://www.yelp.com/biz/charleston-chicago"
+    "street": "2076 N Hoyne Ave",
     "alias": ["the charleston"]
   },
   {
     "name": "blind robin",
+    "url": "http://www.yelp.com/biz/blind-robin-chicago",
+    "street": "853 N Western",
     "alias": ["the blind robin"]
   },
   {
     "name": "the corner",
+    "url": "http://www.yelp.com/biz/the-corner-chicago",
+    "street": "2224 N Leavitt St",
     "alias": ["corner bar", "the corner bar"]
   },
   {
     "name": "j&m tap",
+    "url": "http://www.yelp.com/biz/j-and-m-tap-chicago",
+    "street": "957 N Leavitt",
     "alias": ["j&m", "squirrel", "secret squirrel"]
   },
   {
     "name": "liars club",
+    "url": "http://www.yelp.com/biz/liars-club-chicago",
+    "street": "1665 W Fullerton Ave",
     "alias": ["liars"]
   },
   {
     "name": "quenchers saloon",
+    "url": "http://www.yelp.com/biz/quenchers-saloon-chicago",
+    "street": "2401 N Western Ave",
     "alias": ["quenchers"]
   },
   {
     "name": "beachwood inn",
+    "url": "http://www.yelp.com/biz/beachwood-inn-chicago",
+    "street": "1415 N. Wood Street",
     "alias": ["beachwood"]
   },
   {
     "name": "lava lounge",
+    "url": "http://www.yelp.com/biz/lava-lounge-chicago",
+    "street": "1270 N Milwaukee",
     "alias": ["lava"]
   },
   {
     "name": "the flat iron",
+    "url": "http://www.yelp.com/biz/the-flat-iron-chicago",
+    "street": "1565 N. Milwaukee Ave",
     "alias": ["flat iron"]
   },
   {
     "name": "shoes pub",
+    "url": "http://www.yelp.com/biz/shoes-pub-chicago",
+    "street": "1134 W. Armitage Ave",
     "alias": ["shoes"]
   },
   {
     "name": "bar deville",
+    "url": "http://www.yelp.com/biz/bar-deville-chicago",
+    "street": "701 N. Damen Ave",
     "alias": ["deville"]
   },
   {
     "name": "hungry brain",
+    "url": "http://www.yelp.com/biz/hungry-brain-chicago",
+    "street": "2319 W Belmont Ave",
     "alias": []
   },
   {
     "name": "cody's public house",
+    "url": "http://www.yelp.com/biz/codys-public-house-chicago",
+    "street": "1658 W Barry Ave",
     "alias": ["cody's"]
   },
   {
     "name": "archie's iowa and rockwell tavern",
+    "url": "http://www.yelp.com/biz/archies-iowa-and-rockwell-tavern-chicago",
+    "street": "2600 W Iowa St",
     "alias": ["archie's"]
   },
   {
-    "name": "fiv star bar",
+    "name": "five star bar",
+    "url": "http://www.yelp.com/biz/five-star-bar-chicago",
+    "street": "1424 West Chicago Ave",
     "alias": ["five star"]
   },
   {
     "name": "the continental",
+    "url": "http://www.yelp.com/biz/the-continental-chicago",
+    "street": "2801 W Chicago Ave",
     "alias": ["continental"]
   },
   {
     "name": "the hideout",
+    "url": "http://www.yelp.com/biz/the-hideout-chicago",
+    "street": "1354 W Wabansia Ave",
     "alias": ["hideout", "h/o"]
   },
   {
     "name": "bon v",
+    "url": "http://www.yelp.com/biz/bon-v-chicago",
+    "street": "1100 W Randolph St",
     "alias": []
   },  
   {
     "name": "hüettenbar",
+    "url": "http://www.yelp.com/biz/huettenbar-chicago",
+    "street": "4721 N Lincoln Ave",
     "alias": ["huettenbar"]
   },
   {
     "name": "ricochet's",
+    "url": "http://www.yelp.com/biz/ricochets-chicago",
+    "street": "4644 N Lincoln Ave",
     "alias": []
   },
   {
     "name": "guthrie's tavern",
+    "url": "http://www.yelp.com/biz/guthries-tavern-chicago",
+    "street": "1300 W Addison St",
     "alias": ["guthries"]
   },
   {
     "name": "danny's",
+    "url": "http://www.yelp.com/biz/dannys-chicago",
+    "street": "1951 W Dickens Ave",
     "alias": []
   },
   {
     "name": "four treys tavern",
+    "url": "http://www.yelp.com/biz/four-treys-tavern-chicago",
+    "street": "3333 N. Damen Street",
     "alias": ["four treys"]
   },
   {
     "name": "the chipp inn",
+    "url": "http://www.yelp.com/biz/the-chipp-inn-chicago",
+    "street": "832 N Greenview Ave",
     "alias": ["chipp inn", "chip"]
   },
   {
     "name": "the local option",
+    "url": "http://www.yelp.com/biz/the-local-option-chicago",
+    "street": "1102 W Webster Ave",
     "alias": ["local option"]
   },
   {
     "name": "burke's web pub",
+    "url": "http://www.yelp.com/biz/burkes-web-pub-chicago",
+    "street": "2026 W. Webster Avenue",
     "alias": ["burkes web"]
   },
   {
     "name": "the ashland",
+    "url": "http://www.yelp.com/biz/the-ashland-chicago",
+    "street": "2824 N Ashland Ave",
     "alias": []
   },
   {
     "name": "lemmings",
+    "url": "http://www.yelp.com/biz/lemmings-chicago",
+    "street": "1850 N Damen Ave",
     "alias": []
   },
   {
     "name": "l and l tavern",
+    "url": "http://www.yelp.com/biz/l-and-l-tavern-chicago",
+    "street": "3207 N Clark St",
     "alias": ["l&l", "l&l tavern"]
   },
   {
     "name": "timber lanes",
+    "url": "http://www.yelp.com/biz/timber-lanes-chicago",
+    "street": "1851 W Irving Park Rd",
     "alias": []
   },
   {
     "name": "old town ale house",
+    "url": "http://www.yelp.com/biz/old-town-ale-house-chicago",
+    "street": "219 W North Ave",
     "alias": ["ale house"]
   },
   {
     "name": "mulligans public house",
+    "url": "http://www.yelp.com/biz/mulligans-public-house-chicago",
+    "street": "2000 W Roscoe St",
     "alias": ["mulligans"]
   },
   {
     "name": "nicks beer garden",
+    "url": "http://www.yelp.com/biz/nicks-beer-garden-chicago-2",
+    "street": "1516 N Milwaukee Ave",
     "alias": ["nicks"]
   },
   {
     "name": "wrightwood tap",
+    "url": "http://www.yelp.com/biz/wrightwood-tap-chicago",
+    "street": "1059 W Wrightwood Ave",
     "alias": []
   },
   {
     "name": "swig",
+    "url": "http://www.yelp.com/biz/swig-chicago",
+    "street": "1469 N Milwaukee Ave",
     "alias": []
   },
   {
     "name": "rite liquor",
+    "url": "http://www.yelp.com/biz/rite-liquors-chicago",
+    "street": "1649 W Division St",
     "alias": []
   },
   {
     "name": "lottie's pub",
+    "url": "http://www.yelp.com/biz/lotties-pub-chicago-3",
+    "street": "1925 W Cortland St",
     "alias": ["lotties"]
   },
   {
     "name": "tuman's restaurant",
+    "url": "http://www.yelp.com/biz/tumans-restaurant-chicago",
+    "street": "2159 W Chicago Ave",
     "alias": ["tuman's"]
   },
   {
     "name": "rodan",
+    "url": "http://www.yelp.com/biz/rodan-chicago",
+    "street": "1530 N Milwaukee Ave",
     "alias": []
   },
   {
     "name": "cork lounge",
+    "url": "http://www.yelp.com/biz/cork-lounge-chicago",
+    "street": "1822 W Addison St",
     "alias": []
   },
   {
     "name": "lange's lounge",
+    "url": "http://www.yelp.com/biz/langes-lounge-chicago",
+    "street": "3500 N Southport Ave",
     "alias": ["lange's"]
   },
   {
     "name": "fireside bowl",
+    "url": "http://www.yelp.com/biz/fireside-bowl-chicago",
+    "street": "2648 W Fullerton Ave",
     "alias": ["fireside"]
   },
   {
     "name": "easy bar",
+    "url": "http://www.yelp.com/biz/easy-bar-chicago",
+    "street": "1944 W Division St",
     "alias": []
   },
   {
     "name": "soapy's place",
+    "url": "http://www.yelp.com/biz/soapys-place-chicago",
+    "street": "1429 N Ashland Avenue",
     "alias": ["soapy's landromat", "soapy's"]
   },
   {
     "name": "zakopane",
+    "url": "http://www.yelp.com/biz/zakopane-chicago",
+    "street": "1734 W Division St",
     "alias": []
   }
 ] 
