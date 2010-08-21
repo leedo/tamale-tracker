@@ -4,10 +4,7 @@ use strict;
 use warnings;
 
 use FindBin;
-
 use lib "$FindBin::Bin/../lib";
-use lib "$FindBin::Bin/../extlib/lib/perl5";
-use local::lib "$FindBin::Bin/../extlib";
 
 use JSON;
 use Tamale::Tracker;
@@ -15,5 +12,5 @@ use Tamale::Tracker;
 binmode(STDOUT, ":utf8");
 
 my $tracker = Tamale::Tracker->new(datadir => "$FindBin::Bin/../data");
-my $matches = $tracker->matching_tweets;
+my $matches = $tracker->matching_tweets_by_day;
 print to_json $matches, {pretty => 1};

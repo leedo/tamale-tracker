@@ -5,6 +5,8 @@ use Tamale::Tracker::Util qw/levenshtein_distance clean_name/;
 use Net::Twitter::Lite;
 use Path::Class;
 use Date::Parse;
+use Storable qw/freeze thaw/;
+use DateTime;
 use JSON;
 use DBI;
 
@@ -62,8 +64,31 @@ has dbh => (
 
 has cache => (
   is => 'rw',
-  default => sub {{}},
+  lazy => 1,
+  default => sub {
+    my $self = shift;
+    my $file = file($self->datadir."/tmp/match-cache");
+    if (-e $file) {
+      my $cache = eval { thaw scalar $file->slurp };
+      return $cache unless $@;
+      warn "could not load cache, continuing without it\n";
+    }
+    return {}
+  }
 );
+
+sub write_cache {
+  my $self = shift;
+  my $dir = dir($self->datadir."/tmp");
+  $dir->mkpath;
+  my $fh = $dir->file("match-cache")->openw;
+  print $fh freeze $self->cache;
+}
+
+sub DESTROY {
+  my $self = shift;
+  $self->write_cache;
+}
 
 has insert_sth => (
   is => 'ro',
@@ -137,6 +162,7 @@ sub get_newer_tweets {
   my $self = shift;
   print STDERR "looking for older tweets\n";
   while (my @tweets = $self->download_tweets(max_id => $self->max_id)) {
+    print STDERR " => got ".scalar @tweets." new tweets\n";
     for my $status (@tweets) {
       $self->add_tweet($status->{id}, $status->{text}, $status->{created_at});
     }
@@ -148,6 +174,7 @@ sub get_older_tweets {
   my $self = shift;
   print STDERR "looking for newer tweets\n";
   while (my @tweets = $self->download_tweets(since_id => $self->newest)) {
+    print STDERR "got ".scalar @tweets." new tweets\n";
     for my $status (@tweets) {
       $self->add_tweet($status->{id}, $status->{text}, $status->{created_at});
     }
@@ -222,8 +249,15 @@ sub matching_tweets {
       $bar = clean_name($bar);
 
       if ($bar = $self->closest_bar($bar)) {
+
+        my $color = "unknown";
+        if ($row->[2] =~ /\b(red|blue)\b/i) {
+          $color = lc $1;
+        }
+
         push @matches, {
           bar      => $bar,
+          color    => $color,
           text     => $row->[2],
           date     => str2time($row->[0]),
           id       => $row->[1],
@@ -233,6 +267,29 @@ sub matching_tweets {
   }
 
   return \@matches;
+}
+
+sub matching_tweets_by_day {
+  my $self = shift;
+  my $matches = $self->matching_tweets;
+
+  my %days;
+  my $one_day = DateTime::Duration->new(days => 1);
+
+  for my $match (@$matches) {
+    my $date = DateTime->from_epoch(epoch => $match->{date});
+
+    # count anything before 5AM as the previous day...
+    if ($date->hour < 5) {
+      $date -= $one_day;
+    }
+    $date->truncate(to => 'day');
+    
+    $match->{evening_of} = $date->ymd;
+    push @{$days{$date->ymd}}, $match;
+  }
+
+  return [map {$days{$_}} sort keys %days];
 }
 
 1;
