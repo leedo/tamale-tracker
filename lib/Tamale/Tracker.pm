@@ -5,6 +5,7 @@ use Tamale::Tracker::Util qw/levenshtein_distance clean_name/;
 use Net::Twitter::Lite;
 use Path::Class;
 use Date::Parse;
+use Storable qw/freeze thaw/;
 use JSON;
 use DBI;
 
@@ -62,8 +63,29 @@ has dbh => (
 
 has cache => (
   is => 'rw',
-  default => sub {{}},
+  lazy => 1,
+  default => sub {
+    my $self = shift;
+    my $file = file($self->datadir."/tmp/match-cache");
+    if (-e $file) {
+      return thaw scalar $file->slurp;
+    }
+    return {}
+  }
 );
+
+sub write_cache {
+  my $self = shift;
+  my $dir = dir($self->datadir."/tmp");
+  $dir->mkpath;
+  my $fh = $dir->file("match-cache")->openw;
+  print $fh freeze $self->cache;
+}
+
+sub DESTROY {
+  my $self = shift;
+  $self->write_cache;
+}
 
 has insert_sth => (
   is => 'ro',
@@ -222,8 +244,15 @@ sub matching_tweets {
       $bar = clean_name($bar);
 
       if ($bar = $self->closest_bar($bar)) {
+
+        my $color = "unknown";
+        if ($row->[2] =~ /\b(red|blue)\b/i) {
+          $color = lc $1;
+        }
+
         push @matches, {
           bar      => $bar,
+          color    => $color,
           text     => $row->[2],
           date     => str2time($row->[0]),
           id       => $row->[1],
