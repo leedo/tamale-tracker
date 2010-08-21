@@ -4,6 +4,10 @@ a list of known bars.
 ###locations.json
 a list of tweets matched up to the known bars.
 
+###locations_with_neighborhoods.json
+a temp file for now, same as locations.json but with
+neighborhood components added to the bar data
+
 ###tools/dump_tweets
 will pull down any new tweets from @tamaletracker and insert it in
 a sqlite database, tweets.db. If tweets.db does not exist it will
@@ -14,3 +18,20 @@ will go through the tweets in tweets.db and attempt to associate
 them with a bar name from bars.json. It uses some janky heuristics
 to pull out what looks like a bar name, and then matches that to
 a bar from bars.json using the levenshtein distance.
+
+###tools/add_neighborhoods.rb
+will go through the locations file, find bar names that have street
+components, and ask yelp which neighborhood they're in.  Those
+neighborhoods will be stored in the json file and effectively
+cached.  this tool can be progressively run on ths json file
+to find neighborhoods for unknown bars.
+
+###tools/yelp.rb
+A Yelp class that, so far, only supports querying for neighborhoods
+from street addresses
+
+###tools/.yelpkey
+A file containing a yelp API key that you'll need to add yourself.
+Get a key here: http://www.yelp.com/developers/getting_started/api_access
+Unfortunately limited to 100 queries per day unless you can show them
+you have a working application ;(

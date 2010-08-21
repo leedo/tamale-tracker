@@ -5,7 +5,7 @@ require 'yelp'
 require 'json'
 
 yelpkey_fn = '.yelpkey'
-locations_fn = '../data/locations.json'
+locations_fn = '../data/locations_with_neighborhoods.json'
 
 # Get Locations ready 
 puts "Reading in locations JSON file"
@@ -38,7 +38,7 @@ y = Yelp.new(key)
 
 puts "Steppin'"
 place_cache = {}
-locations_data[0...5].each do |l|
+locations_data[0...10].each do |l|
   # We can't do anything without a street location
   if l['bar']['street']
     street = l['bar']['street'] + ", Chicago, IL"
@@ -75,9 +75,8 @@ end
 # Once we're done, we can write out the locations JSON and it will let us
 # progressively bring in location names for places we haven't asked
 # yelp about yet.
-# Get Locations ready 
-locations_f = File.open locations_fn+'.tmp', 'w' do |f|
-  puts "Dumping modified locations structure to a temp file for now"
+locations_f = File.open locations_fn, 'w' do |f|
+  puts "Dumping modified locations structure"
   locations_json = JSON.pretty_generate locations_data
   f.write locations_json
 end
