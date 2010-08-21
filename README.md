@@ -1,10 +1,12 @@
-###bars.json
+##Files
+
+###data/bars.json
 a list of known bars.
 
-###locations.json
+###data/locations.json
 a list of tweets matched up to the known bars.
 
-###locations_with_neighborhoods.json
+###data/locations_with_neighborhoods.json
 a temp file for now, same as locations.json but with
 neighborhood components added to the bar data
 
@@ -35,3 +37,21 @@ A file containing a yelp API key that you'll need to add yourself.
 Get a key here: http://www.yelp.com/developers/getting_started/api_access
 Unfortunately limited to 100 queries per day unless you can show them
 you have a working application ;(
+
+##Requirements
+
+###perl
+* DBI, DBD::SQLite
+* Any::Moose
+* Net::Twitter::Lite
+* Path::Class
+* Date::Parse
+* JSON
+
+Assuming perl is installed, they can all be installed with:
+    tools/cpanm --sudo DBD::SQLite Any::Moose Net::Twitter::Lite Path::Class Date::Parse JSON
+
+###ruby
+* json
+
+    sudo gem install json
