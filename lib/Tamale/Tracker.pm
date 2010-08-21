@@ -1,8 +1,8 @@
 package Tamale::Tracker;
 
 use Any::Moose;
+use Tamale::Tracker::Util qw/levenshtein_distance clean_name/;
 use Net::Twitter::Lite;
-use List::Util qw/min/;
 use Path::Class;
 use Date::Parse;
 use JSON;
@@ -161,62 +161,6 @@ sub add_tweet {
   $self->update_boundaries($id);
 }
 
-sub clean_name {
-  my ($self, $bar) = @_;
-
-  # strip whitespace
-  $bar =~ s/^\s+//;
-  $bar =~ s/\s+$//;
-
-  # strip of time qualifiers
-  $bar =~ s/\b(?:right now|again|now|during|a while ago)\b.*//i;
-
-  # strip off neighborhood info
-  $bar =~ s/\b(?:in|at|on)\b.*//i;
-
-  # strip off any stupid extra info
-  $bar =~ s/\b(?:and )?(?:(?:he|hes|he's) )?(?:says|loves|heading|headed|heading|for|got|with|http)\b.*//i;
-
-  # strip off any cheerfulness
-  $bar =~ s/\b(?:yay|and i(?:'m)?)\b.*//i;
-
-  # strip whitespace again
-  $bar =~ s/^\s+//;
-  $bar =~ s/\s+$//;
-
-  return $bar;
-}
-
-sub levenshtein_distance {
-  my ($self, $a, $b) = @_;
-
-  my @s = split '', $a;
-  my @t = split '', $b;
-  my $m = scalar @s - 1;
-  my $n = scalar @t - 1;
-  my @d;
-
-  
-  $d[$_][0] = $_ for 0 .. $m;
-  $d[0][$_] = $_ for 0 .. $n;
-
-  for my $j (1 .. $n) {
-    for my $i (1 .. $m) {
-      if ($s[$i] eq $t[$j]) {
-        $d[$i][$j] = $d[$i - 1][$j - 1];
-      } else {
-        $d[$i][$j] = min (
-                       $d[$i - 1][$j]     + 1,  # deletion
-                       $d[$i][$j - 1]     + 1,  # insertion
-                       $d[$i - 1][$j - 1] + 1,  # substitution
-                     );
-      }
-    }
-  }
-
-  return $d[$m][$n];
-}
-
 sub closest_bar {
   my ($self, $guess) = @_;
 
@@ -228,7 +172,7 @@ sub closest_bar {
   for my $bar ($self->bars) {
     my @names = ($bar->{name}, @{$bar->{alias}});
     for my $name (@names) {
-      my $dist = $self->levenshtein_distance($guess, $name);
+      my $dist = levenshtein_distance($guess, $name);
       if ($dist < $best_dist) {
         $best_dist = $dist;
         $best_bar = $bar->{name};
@@ -275,7 +219,7 @@ sub matching_tweets {
       next if $bar =~ /\?/;
       next if $bar =~ /\b(?:wants?|please|por favor)\b/;
 
-      $bar = $self->clean_name($bar);
+      $bar = clean_name($bar);
 
       if ($bar = $self->closest_bar($bar)) {
         push @matches, {
