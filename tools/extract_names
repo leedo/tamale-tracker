@@ -4,132 +4,16 @@ use strict;
 use warnings;
 
 use FindBin;
+
+use lib "$FindBin::Bin/../lib";
 use lib "$FindBin::Bin/../extlib/lib/perl5";
 use local::lib "$FindBin::Bin/../extlib";
 
-use DBI;
-use Data::Dump qw/dump/;
-use Path::Class;
-use Getopt::Long;
 use JSON;
-use Date::Parse;
-use List::Util qw/min/;
+use Tamale::Tracker;
 
 binmode(STDOUT, ":utf8");
 
-my %opt = (dbfile => file("$FindBin::Bin/../tweets.db"));
-
-GetOptions (
-  "dbfile=s"   => \$opt{dbfile},
-);
-
-my $bars = from_json file("$FindBin::Bin/../bars.json")->slurp, {utf8 => 1};
-
-my $dbh = DBI->connect("dbi:SQLite:dbname=$opt{dbfile}","","");
-my $sth = $dbh->prepare("SELECT * FROM updates ORDER BY id DESC");
-$sth->execute;
-
-my @matches;
-my %cache;
-
-while(my $row = $sth->fetchrow_arrayref) {
-  if ($row->[2] =~ /\b(?:at|left|into|leaving) ([a-z][^~\.!@;,1-9()\-]+)/i) {
-    my $bar = lc $1;
-
-    # skip if it ends with a ? or is begging
-    next if $bar =~ /\?/;
-    next if $bar =~ /\b(?:wants?|please|por favor)\b/;
-
-    $bar = clean_name($bar);
-
-    if ($bar = closest_bar($bar)) {
-      push @matches, {
-        location => $bar,
-        text     => $row->[2],
-        date     => str2time($row->[0]),
-        id       => $row->[1],
-      };
-    }
-  }
-}
-
-print to_json \@matches, {pretty => 1};
-
-sub clean_name {
-  my $bar = shift;
-
-  # strip whitespace
-  $bar =~ s/^\s+//;
-  $bar =~ s/\s+$//;
-
-  # strip of time qualifiers
-  $bar =~ s/\b(?:right now|again|now|during|a while ago)\b.*//i;
-
-  # strip off neighborhood info
-  $bar =~ s/\b(?:in|at|on)\b.*//i;
-
-  # strip off any stupid extra info
-  $bar =~ s/\b(?:and )?(?:(?:he|hes|he's) )?(?:says|loves|heading|headed|heading|for|got|with|http)\b.*//i;
-
-  # strip off any cheerfulness
-  $bar =~ s/\b(?:yay|and i(?:'m)?)\b.*//i;
-
-  # strip whitespace again
-  $bar =~ s/^\s+//;
-  $bar =~ s/\s+$//;
-
-  return $bar;
-}
-
-sub closest_bar {
-  my $guess = shift;
-
-  return $cache{$guess} if $cache{$guess};
-
-  my $best_dist = 1000;
-  my $best_bar;
-
-  for my $bar (@$bars) {
-    my @names = ($bar->{name}, @{$bar->{alias}});
-    for my $name (@names) {
-      my $dist = levenshtein_distance($guess, $name);
-      if ($dist < $best_dist) {
-        $best_dist = $dist;
-        $best_bar = $bar->{name};
-      }
-    }
-  }
-
-  $cache{$guess} = $best_bar;
-  return $best_bar;
-}
-
-sub levenshtein_distance {
-  my ($a, $b) = @_;
-
-  my @s = split '', $a;
-  my @t = split '', $b;
-  my $m = scalar @s - 1;
-  my $n = scalar @t - 1;
-  my @d;
-
-  
-  $d[$_][0] = $_ for 0 .. $m;
-  $d[0][$_] = $_ for 0 .. $n;
-
-  for my $j (1 .. $n) {
-    for my $i (1 .. $m) {
-      if ($s[$i] eq $t[$j]) {
-        $d[$i][$j] = $d[$i - 1][$j - 1];
-      } else {
-        $d[$i][$j] = min (
-                       $d[$i - 1][$j]     + 1,  # deletion
-                       $d[$i][$j - 1]     + 1,  # insertion
-                       $d[$i - 1][$j - 1] + 1,  # substitution
-                     );
-      }
-    }
-  }
-
-  return $d[$m][$n];
-}
+my $tracker = Tamale::Tracker->new(datadir => "$FindBin::Bin/../data");
+my $matches = $tracker->matching_tweets;
+print to_json $matches, {pretty => 1};
