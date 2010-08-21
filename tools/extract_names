@@ -15,63 +15,77 @@ use JSON;
 use Date::Parse;
 use List::Util qw/min/;
 
+binmode(STDOUT, ":utf8");
+
 my %opt = (dbfile => file("$FindBin::Bin/../tweets.db"));
 
 GetOptions (
   "dbfile=s"   => \$opt{dbfile},
 );
 
-my $bars = from_json(file("$FindBin::Bin/../bars.json")->slurp);
+my $bars = from_json file("$FindBin::Bin/../bars.json")->slurp, {utf8 => 1};
 
 my $dbh = DBI->connect("dbi:SQLite:dbname=$opt{dbfile}","","");
 my $sth = $dbh->prepare("SELECT * FROM updates ORDER BY id DESC");
 $sth->execute;
 
 my @matches;
+my %cache;
 
 while(my $row = $sth->fetchrow_arrayref) {
-  if ($row->[2] =~ /.*\b(?:at|left|into|leaving) ([a-z][^~\.!@;,1-9()\-]+)/i) {
+  if ($row->[2] =~ /\b(?:at|left|into|leaving) ([a-z][^~\.!@;,1-9()\-]+)/i) {
     my $bar = lc $1;
 
     # skip if it ends with a ? or is begging
     next if $bar =~ /\?/;
-    next if $bar =~ /\b(?:wants?|por favor)\b/;
+    next if $bar =~ /\b(?:wants?|please|por favor)\b/;
 
-    # strip whitespace
-    $bar =~ s/^\s+//;
-    $bar =~ s/\s+$//;
+    $bar = clean_name($bar);
 
-    # strip of time qualifiers
-    $bar =~ s/\b(?:right now|again|now|during|a while ago)\b.*//i;
-
-    # strip off neighborhood info
-    $bar =~ s/\b(?:in|at|on)\b.*//i;
-
-    # strip off any stupid extra info
-    $bar =~ s/\b(?:and )?(?:(?:he|hes|he's) )?(?:says|heading|headed|heading|for|got|with|http)\b.*//i;
-
-    # strip off any cheerfulness
-    $bar =~ s/\b(?:yay|and i(?:'m)?)\b.*//i;
-
-    # strip whitespace again
-    $bar =~ s/^\s+//;
-    $bar =~ s/\s+$//;
-
-    my $nearest = closest_bar($bar);
-
-    push @matches, {
-      location => $nearest,
-      text     => $row->[2],
-      date     => str2time($row->[0]),
-      id       => $row->[1],
-    };
+    if ($bar = closest_bar($bar)) {
+      push @matches, {
+        location => $bar,
+        text     => $row->[2],
+        date     => str2time($row->[0]),
+        id       => $row->[1],
+      };
+    }
   }
 }
 
-print to_json \@matches, {pretty => 1, utf8 => 1};
+print to_json \@matches, {pretty => 1};
+
+sub clean_name {
+  my $bar = shift;
+
+  # strip whitespace
+  $bar =~ s/^\s+//;
+  $bar =~ s/\s+$//;
+
+  # strip of time qualifiers
+  $bar =~ s/\b(?:right now|again|now|during|a while ago)\b.*//i;
+
+  # strip off neighborhood info
+  $bar =~ s/\b(?:in|at|on)\b.*//i;
+
+  # strip off any stupid extra info
+  $bar =~ s/\b(?:and )?(?:(?:he|hes|he's) )?(?:says|loves|heading|headed|heading|for|got|with|http)\b.*//i;
+
+  # strip off any cheerfulness
+  $bar =~ s/\b(?:yay|and i(?:'m)?)\b.*//i;
+
+  # strip whitespace again
+  $bar =~ s/^\s+//;
+  $bar =~ s/\s+$//;
+
+  return $bar;
+}
 
 sub closest_bar {
   my $guess = shift;
+
+  return $cache{$guess} if $cache{$guess};
+
   my $best_dist = 1000;
   my $best_bar;
 
@@ -85,6 +99,8 @@ sub closest_bar {
       }
     }
   }
+
+  $cache{$guess} = $best_bar;
   return $best_bar;
 }
 

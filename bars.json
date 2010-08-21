@@ -21,11 +21,11 @@
   },
   {
     "name": "empty bottle",
-    "alias": ["the empty bottle"]
+    "alias": ["the empty bottle", "emptybottle"]
   },
   {
     "name": "green eye lounge",
-    "alias": ["green eye"]
+    "alias": ["green eye", "greeneye", "the green eye"]
   },
   {
     "name": "bob inn",
@@ -197,7 +197,7 @@
   },
   {
     "name": "l and l tavern",
-    "alias": ["l&l"]
+    "alias": ["l&l", "l&l tavern"]
   },
   {
     "name": "timber lanes",
@@ -205,7 +205,7 @@
   },
   {
     "name": "old town ale house",
-    "alias": []
+    "alias": ["ale house"]
   },
   {
     "name": "mulligans public house",
@@ -230,5 +230,37 @@
   {
     "name": "lottie's pub",
     "alias": ["lotties"]
+  },
+  {
+    "name": "tuman's restaurant",
+    "alias": ["tuman's"]
+  },
+  {
+    "name": "rodan",
+    "alias": []
+  },
+  {
+    "name": "cork lounge",
+    "alias": []
+  },
+  {
+    "name": "lange's lounge",
+    "alias": ["lange's"]
+  },
+  {
+    "name": "fireside bowl",
+    "alias": ["fireside"]
+  },
+  {
+    "name": "easy bar",
+    "alias": []
+  },
+  {
+    "name": "soapy's place",
+    "alias": ["soapy's landromat", "soapy's"]
+  },
+  {
+    "name": "zakopane",
+    "alias": []
   }
 ] 

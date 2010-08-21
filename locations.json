@@ -198,13 +198,13 @@
       "id" : 20436619618
    },
    {
-      "location" : "the mutiny corp",
+      "location" : "tuman's restaurant",
       "date" : 1280987408,
       "text" : "claudio at tumans ~@zakwhich",
       "id" : 20365869181
    },
    {
-      "location" : "the mutiny corp",
+      "location" : "tuman's restaurant",
       "date" : 1280987408,
       "text" : "claudio at tumans ~@zakwhich",
       "id" : 20365869181
@@ -258,13 +258,13 @@
       "id" : 19967340781
    },
    {
-      "location" : "danny's",
+      "location" : "lange's lounge",
       "date" : 1280549705,
       "text" : "blue cooler at Lange's ~@Shannonlee7",
       "id" : 19965766518
    },
    {
-      "location" : "goldies bar",
+      "location" : "soapy's place",
       "date" : 1280505392,
       "text" : "there is a daytime tamale man! He is at Soapy's laundrymat right now. ~@flobear100",
       "id" : 19919833933
@@ -336,7 +336,7 @@
       "id" : 19224915712
    },
    {
-      "location" : "rainbo club",
+      "location" : "fireside bowl",
       "date" : 1279684504,
       "text" : "just left fireside bowl ~@crotchbat",
       "id" : 19047976900
@@ -408,7 +408,7 @@
       "id" : 18659488009
    },
    {
-      "location" : "hÃ¼ettenbar",
+      "location" : "hüettenbar",
       "date" : 1279251306,
       "text" : "red cooler just left huttenbar ~@mhicks",
       "id" : 18655434865
@@ -438,7 +438,7 @@
       "id" : 18501259777
    },
    {
-      "location" : "rainbo club",
+      "location" : "easy bar",
       "date" : 1279085705,
       "text" : "tamales at easy bar! ~@blueberrybike",
       "id" : 18497315659
@@ -588,7 +588,7 @@
       "id" : 17460712634
    },
    {
-      "location" : "club foot",
+      "location" : "rodan",
       "date" : 1277880609,
       "text" : "is at rodan! Come and get it ~@DickyC",
       "id" : 17395974775
@@ -660,7 +660,7 @@
       "id" : 16747905357
    },
    {
-      "location" : "old town ale house",
+      "location" : "the flat iron",
       "date" : 1277019609,
       "text" : "at flat iron and he loves me.... sorry babes that love tamales.... ~@karenchannn",
       "id" : 16602166962
@@ -906,7 +906,7 @@
       "id" : 15396442428
    },
    {
-      "location" : "l and l tavern",
+      "location" : "guthrie's tavern",
       "date" : 1275624913,
       "text" : "at guthries at addison and lakewood ~@litterfritter",
       "id" : 15391555900
@@ -924,7 +924,7 @@
       "id" : 15298889920
    },
    {
-      "location" : "club foot",
+      "location" : "shoes pub",
       "date" : 1275494420,
       "text" : "Daydream = al pastor tamales in Skokie! AAHCK, too bad I left my phone at home. Claudio, ever consider al pastor? Stellar! ~@Oxalii",
       "id" : 15260905792
@@ -990,13 +990,13 @@
       "id" : 14739215538
    },
    {
-      "location" : "the ashland",
+      "location" : "the long room",
       "date" : 1274844911,
       "text" : "Claudio now at Long Room at Irving Pk and Ashland. ~@neilarsenty",
       "id" : 14738647021
    },
    {
-      "location" : "the ashland",
+      "location" : "the long room",
       "date" : 1274839512,
       "text" : "Just left the Long Room at Irving Pk and Ashland. ~@neilarsenty",
       "id" : 14733365556
@@ -1026,13 +1026,13 @@
       "id" : 14538296943
    },
    {
-      "location" : "happy village",
+      "location" : "zakopane",
       "date" : 1274588406,
       "text" : "Blue cooler (not Claudio) just left Zakopane (Division and Paulina) ~@flobear100",
       "id" : 14536034441
    },
    {
-      "location" : "rainbo club",
+      "location" : "easy bar",
       "date" : 1274509806,
       "text" : "at Easy Bar. ~@VultureAM",
       "id" : 14478755412
@@ -1164,7 +1164,7 @@
       "id" : 13654192052
    },
    {
-      "location" : "augie's",
+      "location" : "tuman's restaurant",
       "date" : 1273385409,
       "text" : "red cooler at Tuman's ~@KylePWolfe",
       "id" : 13652947552
@@ -1176,7 +1176,7 @@
       "id" : 13648216104
    },
    {
-      "location" : "ten cat tavern",
+      "location" : "tuman's restaurant",
       "date" : 1273303506,
       "text" : "Tamale Guy at a Mexican restaurant just seems redundant and tacky. ~@5pr0ck37",
       "id" : 13596338635
@@ -1194,7 +1194,7 @@
       "id" : 13585338547
    },
    {
-      "location" : "the corner",
+      "location" : "old town ale house",
       "date" : 1273205426,
       "text" : "claudio at ale house, heading to wells ~@arnettmcmurray",
       "id" : 13528395482
@@ -1206,7 +1206,7 @@
       "id" : 13526996427
    },
    {
-      "location" : "lava lounge",
+      "location" : "cork lounge",
       "date" : 1273197743,
       "text" : "blue cooler at cork lounge. Queso n chicken mmmm ~@kaydeelee",
       "id" : 13522086980
@@ -1284,7 +1284,7 @@
       "id" : 13171644630
    },
    {
-      "location" : "club foot",
+      "location" : "rodan",
       "date" : 1272610208,
       "text" : "just left Rodan! ~@counterform",
       "id" : 13115411589
@@ -1302,13 +1302,13 @@
       "id" : 13111781145
    },
    {
-      "location" : "lava lounge",
+      "location" : "cork lounge",
       "date" : 1272593140,
       "text" : "blue cooler at cork lounge ~@myhotkachina",
       "id" : 13103900760
    },
    {
-      "location" : "club foot",
+      "location" : "rodan",
       "date" : 1272523207,
       "text" : "just left roan ~@alan_aka_mig",
       "id" : 13054852494
@@ -1320,7 +1320,7 @@
       "id" : 12919380514
    },
    {
-      "location" : "club foot",
+      "location" : "rodan",
       "date" : 1272180310,
       "text" : "he just left rodan says he's staying around here north/damen/milwaukee..thks again ! ~@alan_aka_mig",
       "id" : 12809877301
@@ -1704,7 +1704,7 @@
       "id" : 10604351485
    },
    {
-      "location" : "the whistler",
+      "location" : "map room",
       "date" : 1268547641,
       "text" : "Claudio at Map Room! I wish I was hungry, but I just stuffed myself at The Bristol ~@interpunct",
       "id" : 10459017478
@@ -1860,7 +1860,7 @@
       "id" : 9762947615
    },
    {
-      "location" : "cole's",
+      "location" : "j&m tap",
       "date" : 1267332907,
       "text" : "Red cooler at at Caseys ~@bmsantia78",
       "id" : 9762947599
@@ -1950,7 +1950,7 @@
       "id" : 9372385398
    },
    {
-      "location" : "lava lounge",
+      "location" : "cork lounge",
       "date" : 1266641135,
       "text" : "Claudio leaving cork lounge ~@scaredpanda",
       "id" : 9369939625
@@ -1968,7 +1968,7 @@
       "id" : 9317288088
    },
    {
-      "location" : "rainbo club",
+      "location" : "easy bar",
       "date" : 1266388206,
       "text" : "Red Cooler at Easy Bar! ~@tankboy",
       "id" : 9223118921
@@ -2250,7 +2250,7 @@
       "id" : 8137114708
    },
    {
-      "location" : "gold star",
+      "location" : "happy village",
       "date" : 1264305911,
       "text" : "at happy village... too bad im full from delicious korean fusion at belly shack ~@corinacorrie",
       "id" : 8136634088
@@ -2358,7 +2358,7 @@
       "id" : 7577732404
    },
    {
-      "location" : "map room",
+      "location" : "soapy's place",
       "date" : 1263078038,
       "text" : "at this laundromat on western and thomas. she is a lady. ~@AdinaLyn",
       "id" : 7572244375
@@ -2490,7 +2490,7 @@
       "id" : 6852468219
    },
    {
-      "location" : "guthrie's tavern",
+      "location" : "tuman's restaurant",
       "date" : 1261202110,
       "text" : "RT @thomascbowen: http://twitpic.com/u4n7a - Claudio (  ) at my buddy's engagement. A tamale is forever. ~@scaredpanda",
       "id" : 6821759417
@@ -2604,7 +2604,7 @@
       "id" : 6559892603
    },
    {
-      "location" : "old town ale house",
+      "location" : "l and l tavern",
       "date" : 1260378662,
       "text" : "Ran into Claudio this weekend & he loves the new shirt. http://scaredpanda.com/2009/12/the-inspiration-behind-the-shirt/ ~@scaredpanda",
       "id" : 6502110454
@@ -2622,7 +2622,7 @@
       "id" : 6452888041
    },
    {
-      "location" : "hÃ¼ettenbar",
+      "location" : "hüettenbar",
       "date" : 1260075619,
       "text" : "claudio just left huttenbar and loves @scaredpanda red cooler tshirts! Success! ~@myhotkachina",
       "id" : 6391460481
@@ -2904,7 +2904,7 @@
       "id" : 5472973787
    },
    {
-      "location" : "hÃ¼ettenbar",
+      "location" : "hüettenbar",
       "date" : 1257480627,
       "text" : "at huettenbar http://myloc.me/1mdfl ~@gabegarms",
       "id" : 5470175949
@@ -2922,7 +2922,7 @@
       "id" : 5330523887
    },
    {
-      "location" : "club foot",
+      "location" : "the hideout",
       "date" : 1256963106,
       "text" : "Claudio at the Hideout. Man, I just ate at Fogo and I still got tamales! ~@saddestpanda",
       "id" : 5307019522
@@ -3600,7 +3600,7 @@
       "id" : 3704564355
    },
    {
-      "location" : "hÃ¼ettenbar",
+      "location" : "hüettenbar",
       "date" : 1251861311,
       "text" : "red cooler at Huettenbar ~@mcleger",
       "id" : 3703776925
@@ -3612,7 +3612,7 @@
       "id" : 3703221094
    },
    {
-      "location" : "the local option",
+      "location" : "the continental",
       "date" : 1251797711,
       "text" : "totally also at continental.  Chatting up a lady for a loooong time.  Not too many tamales moved at this locale tonight. ~@stupididiot1000",
       "id" : 3685361481
@@ -3870,7 +3870,7 @@
       "id" : 3202366300
    },
    {
-      "location" : "hÃ¼ettenbar",
+      "location" : "hüettenbar",
       "date" : 1249702813,
       "text" : "red cooler left Huettenbar ~@mcleger",
       "id" : 3188422932
@@ -4164,7 +4164,7 @@
       "id" : 2560945966
    },
    {
-      "location" : "club foot",
+      "location" : "rodan",
       "date" : 1246948261,
       "text" : "red cooler at rodan. ~@sama_lamb",
       "id" : 2510382378
@@ -4176,7 +4176,7 @@
       "id" : 2507562520
    },
    {
-      "location" : "map room",
+      "location" : "the hideout",
       "date" : 1246681867,
       "text" : "Claudio at the Hideout now... Hope to see him later at darkroom for the trifecta! ~@cmeow",
       "id" : 2465170253
@@ -4368,7 +4368,7 @@
       "id" : 2219000814
    },
    {
-      "location" : "map room",
+      "location" : "old town ale house",
       "date" : 1245118206,
       "text" : "claudio just left the ale house with a red cooler ... Yum! ~@__LOMO",
       "id" : 2186670498
@@ -4398,7 +4398,7 @@
       "id" : 2154039405
    },
    {
-      "location" : "hÃ¼ettenbar",
+      "location" : "hüettenbar",
       "date" : 1244903768,
       "text" : "red cooler at Huettenbar ~@quinnsi",
       "id" : 2154039362
@@ -4746,7 +4746,7 @@
       "id" : 1733931472
    },
    {
-      "location" : "hÃ¼ettenbar",
+      "location" : "hüettenbar",
       "date" : 1241666040,
       "text" : "Wednesday 10:12 pm: @revdave says -  Claudio at Huttenbar",
       "id" : 1723674076
@@ -5334,13 +5334,13 @@
       "id" : 1398531986
    },
    {
-      "location" : "j&m tap",
+      "location" : "l and l tavern",
       "date" : 1238118965,
       "text" : "Thursday 8:55 pm: @tankboy says - at l&l tavern.",
       "id" : 1398396157
    },
    {
-      "location" : "l and l tavern",
+      "location" : "green eye lounge",
       "date" : 1238116201,
       "text" : "Thursday 8:09 pm: @dylanorion says - saw the tamale guy at the greeneye at milwaukee and western",
       "id" : 1398150680
@@ -5472,7 +5472,7 @@
       "id" : 1295435360
    },
    {
-      "location" : "gold star",
+      "location" : "hüettenbar",
       "date" : 1236485883,
       "text" : "RT @ElizMcQuern Tamale Guy is at Huettenbar at Lincoln Square!!",
       "id" : 1295282791
