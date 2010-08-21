@@ -35,7 +35,8 @@ y = Yelp.new(key)
 
 place_cache = {}
 
-locations_data[0...2].each do |l|
+locations_data[0...5].each do |l|
+  # We can't do anything without a street location
   if l['bar']['street']
     street = l['bar']['street'] + ", Chicago, IL"
     name = l['bar']['name']
@@ -44,12 +45,15 @@ locations_data[0...2].each do |l|
     continue if neighborhood
     # Is it in our session yelp cache?
     if place_cache[name]
-      continue if place_cache[name]['neighborhood']
+      continue if place_cache[name]['bar']['neighborhood']
     end
     # Ok, so there's no neighborhood for this place in the JSON
     #  nor have we got a neighborhood for it from Yelp during
     #  this session, lets ask yelp about it.
     neighborhood = y.neighborhood_search(street)
-    puts neighborhood
+    l['bar']['neighborhood'] = neighborhood
+    place_cache[name] = l
   end
 end
+
+puts place_cache.inspect
