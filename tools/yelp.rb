@@ -46,6 +46,3 @@ class Yelp
     @output_type = output_type 
   end
 end
-
-y = Yelp.new 'XVaayCrthmLUvV470GJZIw'
-puts y.neighborhood_search('2333 W. St. Paul, Chicago, IL')
