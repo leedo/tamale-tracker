@@ -48,8 +48,13 @@ locations_data[0...10].each do |l|
     end
     # Is it in our session yelp cache?
     if place_cache[name]
-      puts "We've already asked yelp for #{name}'s neighborhood (#{place_cache[name]['bar']['neighborhood']}) this session."
-      next if place_cache[name]['bar']['neighborhood']
+      cached_neighborhood = place_cache[name]['bar']['neighborhood']
+      puts "We've already asked yelp for #{name}'s neighborhood (#{cached_neighborhood}) this session."
+      # No need to hit yelp for dupes.
+      if cached_neighborhood
+        l['bar']['neighborhood'] = cached_neighborhood
+        next
+      end
     end
     # Ok, so there's no neighborhood for this place in the JSON
     #  nor have we got a neighborhood for it from Yelp during
@@ -63,3 +68,7 @@ locations_data[0...10].each do |l|
     place_cache[name] = l
   end
 end
+
+# Once we're done, we can write out the locations JSON and it will let us
+# progressively bring in location names for places we haven't asked
+# yelp about yet.
