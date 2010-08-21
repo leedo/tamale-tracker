@@ -54,4 +54,5 @@ Assuming perl is installed, they can all be installed with:
 ###ruby
 * json
 
+Install with rubygems
     sudo gem install json
