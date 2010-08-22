@@ -35,14 +35,14 @@ you have a working application ;(
 ##Requirements
 
 ###perl
-* DBI, DBD::SQLite
+* DBD::SQLite
 * Any::Moose
 * Net::Twitter::Lite
 * Path::Class
 * Date::Parse
 * JSON
 
-Assuming perl is installed, they can all be installed with:
+These can all be installed with:
     tools/cpanm --sudo DBD::SQLite Any::Moose Net::Twitter::Lite Path::Class Date::Parse JSON
 
 ###ruby

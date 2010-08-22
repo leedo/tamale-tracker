@@ -283,6 +283,15 @@ sub matching_tweets_by_day {
     if ($date->hour < 5) {
       $date -= $one_day;
     }
+
+# disabled for now
+#
+    # anything after 5AM and before 5PM is useless
+#    elsif ($date->hour < 17) {
+#      next;
+#    }
+#
+
     $date->truncate(to => 'day');
     
     $match->{evening_of} = $date->ymd;
