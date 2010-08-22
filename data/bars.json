@@ -1,879 +1,614 @@
 [
   {
     "name": "the whistler",
-    "location": {
-      "lng": -87.70095,
-      "lat": 41.9254419
-    },
     "url": "http://www.yelp.com/biz/the-whistler-chicago",
     "street": "2421 N Milwaukee Ave",
-    "neighborhood": "Logan Square",
     "alias": [
 
     ]
   },
   {
     "name": "the map room",
-    "location": {
-      "lng": -87.6800646,
-      "lat": 41.9175949
-    },
     "url": "http://www.yelp.com/biz/the-map-room-chicago",
     "street": "1949 N Hoyne Ave",
-    "neighborhood": "Bucktown",
     "alias": [
       "map room"
-    ]
+    ],
+    "neighborhood": "Bucktown"
   },
   {
     "name": "rainbo club",
-    "location": {
-      "lng": -87.6772537,
-      "lat": 41.9025135
-    },
     "url": "http://www.yelp.com/biz/rainbo-club-chicago",
     "street": "1150 N Damen Ave",
-    "neighborhood": "Ukrainian Village",
     "alias": [
       "rainbo",
       "rainbow"
-    ]
+    ],
+    "neighborhood": "Ukrainian Village"
   },
   {
     "name": "ten cat tavern",
-    "location": {
-      "lng": -87.668824,
-      "lat": 41.9534295
-    },
     "url": "http://www.yelp.com/biz/ten-cat-tavern-chicago",
     "street": "3931 N Ashland Avenue",
-    "neighborhood": "Lakeview",
     "alias": [
       "ten cat",
       "the ten cat"
-    ]
+    ],
+    "neighborhood": "Lakeview"
   },
   {
     "name": "the gingerman tavern",
-    "location": {
-      "lng": -87.6593227,
-      "lat": 41.9506195
-    },
     "url": "http://www.yelp.com/biz/the-gingerman-tavern-chicago",
     "street": "3740 N Clark St",
-    "neighborhood": "Lakeview",
     "alias": [
       "gingerman",
       "the gingerman"
-    ]
+    ],
+    "neighborhood": "Lakeview"
   },
   {
     "name": "empty bottle",
-    "location": {
-      "lng": -87.686638,
-      "lat": 41.900474
-    },
     "url": "http://www.yelp.com/biz/empty-bottle-chicago",
     "street": "1035 N Western Ave",
-    "neighborhood": "Ukrainian Village",
     "alias": [
       "the empty bottle",
       "emptybottle"
-    ]
+    ],
+    "neighborhood": "Ukrainian Village"
   },
   {
     "name": "green eye lounge",
-    "location": {
-      "lng": -87.6874616,
-      "lat": 41.9166564
-    },
     "url": "http://www.yelp.com/biz/green-eye-lounge-chicago",
     "street": "2403 W Homer St",
-    "neighborhood": "Bucktown",
     "alias": [
       "green eye",
       "greeneye",
       "the green eye"
-    ]
+    ],
+    "neighborhood": "Bucktown"
   },
   {
     "name": "bob inn",
-    "location": {
-      "lng": -87.692988,
-      "lat": 41.92456
-    },
     "url": "http://www.yelp.com/biz/bob-inn-chicago",
     "street": "2609 W Fullerton Ave",
-    "neighborhood": "Logan Square",
     "alias": [
       "the bob inn"
-    ]
+    ],
+    "neighborhood": "Logan Square"
   },
   {
     "name": "cole's",
-    "location": {
-      "lng": -87.698723,
-      "lat": 41.9237443
-    },
     "url": "http://www.yelp.com/biz/coles-chicago",
     "street": "2338 N Milwaukee Ave",
-    "neighborhood": "Logan Square",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Logan Square"
   },
   {
     "name": "the long room",
-    "location": {
-      "lng": -87.669708,
-      "lat": 41.954564
-    },
     "url": "http://www.yelp.com/biz/the-long-room-chicago",
     "street": "1612 W Irving Park Rd",
-    "neighborhood": "Lakeview",
     "alias": [
       "long room"
-    ]
+    ],
+    "neighborhood": "Lakeview"
   },
   {
     "name": "happy village",
-    "location": {
-      "lng": -87.6747143,
-      "lat": 41.901265
-    },
     "url": "http://www.yelp.com/biz/happy-village-chicago",
     "street": "1059 N Wolcott Ave",
-    "neighborhood": "Ukrainian Village",
     "alias": [
       "happy"
-    ]
+    ],
+    "neighborhood": "Ukrainian Village"
   },
   {
     "name": "club foot",
-    "location": {
-      "lng": -87.6732998,
-      "lat": 41.8996397
-    },
     "url": "http://www.yelp.com/biz/club-foot-chicago",
     "street": "1824 W Augusta Blvd",
-    "neighborhood": "Ukrainian Village",
     "alias": [
       "foot",
       "the club foot"
-    ]
+    ],
+    "neighborhood": "Ukrainian Village"
   },
   {
     "name": "will's northwoods inn",
-    "location": {
-      "lng": -87.65893,
-      "lat": 41.9372102
-    },
     "url": "http://www.yelp.com/biz/wills-northwoods-inn-chicago",
     "street": "3030 N Racine Ave",
-    "neighborhood": "Lakeview",
     "alias": [
       "will's",
       "northwoods inn",
       "will's northwoods"
-    ]
+    ],
+    "neighborhood": "Lakeview"
   },
   {
     "name": "the mutiny corp",
-    "location": {
-      "lng": -87.6880709,
-      "lat": 41.925834
-    },
     "url": "http://www.yelp.com/biz/the-mutiny-corp-chicago",
     "street": "2428 N Western Ave",
-    "neighborhood": "Bucktown",
     "alias": [
       "mutiny"
-    ]
+    ],
+    "neighborhood": "Bucktown"
   },
   {
     "name": "augie's",
-    "location": {
-      "lng": -87.67156,
-      "lat": 41.928438
-    },
     "url": "http://www.yelp.com/biz/augies-chicago",
     "street": "1721 W Wrightwood Ave",
-    "neighborhood": "Lincoln Park",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Lincoln Park"
   },
   {
     "name": "whirlaway lounge",
-    "location": {
-      "lng": -87.7085762,
-      "lat": 41.9247374
-    },
     "url": "http://www.yelp.com/biz/whirlaway-lounge-chicago",
     "street": "3224 W. Fullerton",
-    "neighborhood": "Logan Square",
     "alias": [
       "whirlaway"
-    ]
+    ],
+    "neighborhood": "Logan Square"
   },
   {
     "name": "the california clipper",
-    "location": {
-      "lng": -87.6969949,
-      "lat": 41.8994291
-    },
     "url": "http://www.yelp.com/biz/the-california-clipper-chicago",
     "street": "1002 N California Ave",
-    "neighborhood": "Humboldt Park",
     "alias": [
       "clipper",
       "cali clipper",
       "california clipper",
       "cal clipper"
-    ]
+    ],
+    "neighborhood": "Humboldt Park"
   },
   {
     "name": "gold star",
-    "location": {
-      "lng": -87.672042,
-      "lat": 41.902963
-    },
     "url": "http://www.yelp.com/biz/gold-star-bar-chicago",
     "street": "1755 W Division St",
-    "neighborhood": "Ukrainian Village",
     "alias": [
       "goldstar"
-    ]
+    ],
+    "neighborhood": "Ukrainian Village"
   },
   {
     "name": "goldies bar",
-    "location": {
-      "lng": -87.676648,
-      "lat": 41.951625
-    },
     "url": "http://www.yelp.com/biz/goldies-bar-chicago",
     "street": "3839 N Lincoln Ave",
-    "neighborhood": "North Center",
     "alias": [
       "goldies"
-    ]
+    ],
+    "neighborhood": "North Center"
   },
   {
     "name": "phyllis' musical inn",
-    "location": {
-      "lng": -87.672575,
-      "lat": 41.90354
-    },
     "url": "http://www.yelp.com/biz/phyllis-musical-inn-chicago",
     "street": "1800 W Division St",
-    "neighborhood": "Wicker Park",
     "alias": [
       "phyllis"
-    ]
+    ],
+    "neighborhood": "Wicker Park"
   },
   {
     "name": "innertown pub",
-    "location": {
-      "lng": -87.676131,
-      "lat": 41.901159
-    },
     "url": "http://www.yelp.com/biz/innertown-pub-chicago",
     "street": "1935 W Thomas St.",
-    "neighborhood": "Ukrainian Village",
     "alias": [
       "inner town"
-    ]
+    ],
+    "neighborhood": "Ukrainian Village"
   },
   {
     "name": "charleston",
-    "location": {
-      "lng": -87.6801719,
-      "lat": 41.9198356
-    },
     "url": "http://www.yelp.com/biz/charleston-chicago",
     "street": "2076 N Hoyne Ave",
-    "neighborhood": "Bucktown",
     "alias": [
       "the charleston"
-    ]
+    ],
+    "neighborhood": "Bucktown"
   },
   {
     "name": "blind robin",
-    "location": {
-      "lng": -87.6868341,
-      "lat": 41.8972845
-    },
     "url": "http://www.yelp.com/biz/blind-robin-chicago",
     "street": "853 N Western",
-    "neighborhood": "Ukrainian Village",
     "alias": [
       "the blind robin"
-    ]
+    ],
+    "neighborhood": "Ukrainian Village"
   },
   {
     "name": "the corner",
-    "location": {
-      "lng": -87.682961,
-      "lat": 41.922036
-    },
     "url": "http://www.yelp.com/biz/the-corner-chicago",
     "street": "2224 N Leavitt St",
-    "neighborhood": "Bucktown",
     "alias": [
       "corner bar",
       "the corner bar"
-    ]
+    ],
+    "neighborhood": "Bucktown"
   },
   {
     "name": "j&m tap",
-    "location": {
-      "lng": -87.682016,
-      "lat": 41.899257
-    },
     "url": "http://www.yelp.com/biz/j-and-m-tap-chicago",
     "street": "957 N Leavitt",
-    "neighborhood": "Ukrainian Village",
     "alias": [
       "j&m",
       "squirrel",
       "secret squirrel"
-    ]
+    ],
+    "neighborhood": "Ukrainian Village"
   },
   {
     "name": "liars club",
-    "location": {
-      "lng": -87.6706165,
-      "lat": 41.9250215
-    },
     "url": "http://www.yelp.com/biz/liars-club-chicago",
     "street": "1665 W Fullerton Ave",
-    "neighborhood": "DePaul",
     "alias": [
       "liars"
-    ]
+    ],
+    "neighborhood": "DePaul"
   },
   {
     "name": "quenchers saloon",
-    "location": {
-      "lng": -87.687323,
-      "lat": 41.925095
-    },
     "url": "http://www.yelp.com/biz/quenchers-saloon-chicago",
     "street": "2401 N Western Ave",
-    "neighborhood": "Bucktown",
     "alias": [
       "quenchers"
-    ]
+    ],
+    "neighborhood": "Bucktown"
   },
   {
     "name": "beachwood inn",
-    "location": {
-      "lng": -87.6724569,
-      "lat": 41.9076585
-    },
     "url": "http://www.yelp.com/biz/beachwood-inn-chicago",
     "street": "1415 N. Wood Street",
-    "neighborhood": "Wicker Park",
     "alias": [
       "beachwood"
-    ]
+    ],
+    "neighborhood": "Wicker Park"
   },
   {
     "name": "lava lounge",
-    "location": {
-      "lng": -87.669041,
-      "lat": 41.904719
-    },
     "url": "http://www.yelp.com/biz/lava-lounge-chicago",
     "street": "1270 N Milwaukee",
-    "neighborhood": "Wicker Park",
     "alias": [
       "lava"
-    ]
+    ],
+    "neighborhood": "Wicker Park"
   },
   {
     "name": "the flat iron",
-    "location": {
-      "lng": -87.6767335,
-      "lat": 41.909913
-    },
     "url": "http://www.yelp.com/biz/the-flat-iron-chicago",
     "street": "1565 N. Milwaukee Ave",
-    "neighborhood": "Wicker Park",
     "alias": [
       "flat iron"
-    ]
+    ],
+    "neighborhood": "Wicker Park"
   },
   {
     "name": "shoes pub",
-    "location": {
-      "lng": -87.6568435,
-      "lat": 41.9181554
-    },
     "url": "http://www.yelp.com/biz/shoes-pub-chicago",
     "street": "1134 W. Armitage Ave",
-    "neighborhood": "Lincoln Park",
     "alias": [
       "shoes"
-    ]
+    ],
+    "neighborhood": "Lincoln Park"
   },
   {
     "name": "bar deville",
-    "location": {
-      "lng": -87.6769772,
-      "lat": 41.8940998
-    },
     "url": "http://www.yelp.com/biz/bar-deville-chicago",
     "street": "701 N. Damen Ave",
-    "neighborhood": "Ukrainian Village",
     "alias": [
       "deville"
-    ]
+    ],
+    "neighborhood": "Ukrainian Village"
   },
   {
     "name": "hungry brain",
-    "location": {
-      "lng": -87.6865023,
-      "lat": 41.9394466
-    },
     "url": "http://www.yelp.com/biz/hungry-brain-chicago",
     "street": "2319 W Belmont Ave",
-    "neighborhood": "Roscoe Village",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Roscoe Village"
   },
   {
     "name": "cody's public house",
-    "location": {
-      "lng": -87.670845,
-      "lat": 41.938105
-    },
     "url": "http://www.yelp.com/biz/codys-public-house-chicago",
     "street": "1658 W Barry Ave",
-    "neighborhood": "Lakeview",
     "alias": [
       "cody's"
-    ]
+    ],
+    "neighborhood": "Lakeview"
   },
   {
     "name": "archie's iowa and rockwell tavern",
-    "location": {
-      "lng": -87.69193,
-      "lat": 41.897589
-    },
     "url": "http://www.yelp.com/biz/archies-iowa-and-rockwell-tavern-chicago",
     "street": "2600 W Iowa St",
-    "neighborhood": "Humboldt Park",
     "alias": [
       "archie's"
-    ]
+    ],
+    "neighborhood": "Humboldt Park"
   },
   {
     "name": "five star bar",
-    "location": {
-      "lng": -87.663416,
-      "lat": 41.896355
-    },
     "url": "http://www.yelp.com/biz/five-star-bar-chicago",
     "street": "1424 West Chicago Ave",
-    "neighborhood": "Noble Square",
     "alias": [
       "five star"
-    ]
+    ],
+    "neighborhood": "Noble Square"
   },
   {
     "name": "the continental",
-    "location": {
-      "lng": -87.696839,
-      "lat": 41.895397
-    },
     "url": "http://www.yelp.com/biz/the-continental-chicago",
     "street": "2801 W Chicago Ave",
-    "neighborhood": "Humboldt Park",
     "alias": [
       "continental"
-    ]
+    ],
+    "neighborhood": "Humboldt Park"
   },
   {
     "name": "the hideout",
-    "location": {
-      "lng": -87.662468,
-      "lat": 41.913697
-    },
     "url": "http://www.yelp.com/biz/the-hideout-chicago",
     "street": "1354 W Wabansia Ave",
-    "neighborhood": "Noble Square",
     "alias": [
       "hideout",
       "h/o"
-    ]
+    ],
+    "neighborhood": "Noble Square"
   },
   {
     "name": "bon v",
-    "location": {
-      "lng": -87.654766,
-      "lat": 41.88456
-    },
     "url": "http://www.yelp.com/biz/bon-v-chicago",
     "street": "1100 W Randolph St",
-    "neighborhood": "West Loop",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "West Loop"
   },
   {
-    "name": "hüettenbar",
-    "location": {
-      "lng": -87.6876269,
-      "lat": 41.9672392
-    },
+    "name": "hÃ¼ettenbar",
     "url": "http://www.yelp.com/biz/huettenbar-chicago",
     "street": "4721 N Lincoln Ave",
-    "neighborhood": "Lincoln Square",
     "alias": [
       "huettenbar"
-    ]
+    ],
+    "neighborhood": "Lincoln Square"
   },
   {
     "name": "ricochet's",
-    "location": {
-      "lng": -87.68719,
-      "lat": 41.965979
-    },
     "url": "http://www.yelp.com/biz/ricochets-chicago",
     "street": "4644 N Lincoln Ave",
-    "neighborhood": "Lincoln Square",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Lincoln Square"
   },
   {
     "name": "guthrie's tavern",
-    "location": {
-      "lng": -87.6617684,
-      "lat": 41.9472303
-    },
     "url": "http://www.yelp.com/biz/guthries-tavern-chicago",
     "street": "1300 W Addison St",
-    "neighborhood": "Lakeview",
     "alias": [
       "guthries"
-    ]
+    ],
+    "neighborhood": "Lakeview"
   },
   {
     "name": "danny's",
-    "location": {
-      "lng": -87.677232,
-      "lat": 41.919327
-    },
     "url": "http://www.yelp.com/biz/dannys-chicago",
     "street": "1951 W Dickens Ave",
-    "neighborhood": "Bucktown",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Bucktown"
   },
   {
     "name": "four treys tavern",
-    "location": {
-      "lng": -87.678295,
-      "lat": 41.9423979
-    },
     "url": "http://www.yelp.com/biz/four-treys-tavern-chicago",
     "street": "3333 N. Damen Street",
-    "neighborhood": "Roscoe Village",
     "alias": [
       "four treys"
-    ]
+    ],
+    "neighborhood": "Roscoe Village"
   },
   {
     "name": "the chipp inn",
-    "location": {
-      "lng": -87.665106,
-      "lat": 41.897083
-    },
     "url": "http://www.yelp.com/biz/the-chipp-inn-chicago",
     "street": "832 N Greenview Ave",
-    "neighborhood": "Noble Square",
     "alias": [
       "chipp inn",
       "chip"
-    ]
+    ],
+    "neighborhood": "Noble Square"
   },
   {
     "name": "the local option",
-    "location": {
-      "lng": -87.656165,
-      "lat": 41.9219549
-    },
     "url": "http://www.yelp.com/biz/the-local-option-chicago",
     "street": "1102 W Webster Ave",
-    "neighborhood": "Lincoln Park",
     "alias": [
       "local option"
-    ]
+    ],
+    "neighborhood": "Lincoln Park"
   },
   {
     "name": "burke's web pub",
-    "location": {
-      "lng": -87.678605,
-      "lat": 41.9215342
-    },
     "url": "http://www.yelp.com/biz/burkes-web-pub-chicago",
     "street": "2026 W. Webster Avenue",
-    "neighborhood": "Bucktown",
     "alias": [
       "burkes web"
-    ]
+    ],
+    "neighborhood": "Bucktown"
   },
   {
     "name": "the ashland",
-    "location": {
-      "lng": -87.6684866,
-      "lat": 41.933155
-    },
     "url": "http://www.yelp.com/biz/the-ashland-chicago",
     "street": "2824 N Ashland Ave",
-    "neighborhood": "Lakeview",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Lakeview"
   },
   {
     "name": "lemmings",
-    "location": {
-      "lng": -87.677879,
-      "lat": 41.915286
-    },
     "url": "http://www.yelp.com/biz/lemmings-chicago",
     "street": "1850 N Damen Ave",
-    "neighborhood": "Bucktown",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Bucktown"
   },
   {
     "name": "l and l tavern",
-    "location": {
-      "lng": -87.650728,
-      "lat": 41.940252
-    },
     "url": "http://www.yelp.com/biz/l-and-l-tavern-chicago",
     "street": "3207 N Clark St",
-    "neighborhood": "Lakeview",
     "alias": [
       "l&l",
       "l&l tavern"
-    ]
+    ],
+    "neighborhood": "Lakeview"
   },
   {
     "name": "timber lanes",
-    "location": {
-      "lng": -87.6760908,
-      "lat": 41.9540363
-    },
     "url": "http://www.yelp.com/biz/timber-lanes-chicago",
     "street": "1851 W Irving Park Rd",
-    "neighborhood": "North Center",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "North Center"
   },
   {
     "name": "old town ale house",
-    "location": {
-      "lng": -87.635544,
-      "lat": 41.910973
-    },
     "url": "http://www.yelp.com/biz/old-town-ale-house-chicago",
     "street": "219 W North Ave",
-    "neighborhood": "Near North Side",
     "alias": [
       "ale house"
-    ]
+    ],
+    "neighborhood": "Near North Side"
   },
   {
     "name": "mulligans public house",
-    "location": {
-      "lng": -87.6785854,
-      "lat": 41.9433397
-    },
     "url": "http://www.yelp.com/biz/mulligans-public-house-chicago",
     "street": "2000 W Roscoe St",
-    "neighborhood": "Roscoe Village",
     "alias": [
       "mulligans"
-    ]
+    ],
+    "neighborhood": "Roscoe Village"
   },
   {
     "name": "nicks beer garden",
-    "location": {
-      "lng": -87.675535,
-      "lat": 41.909009
-    },
     "url": "http://www.yelp.com/biz/nicks-beer-garden-chicago-2",
     "street": "1516 N Milwaukee Ave",
-    "neighborhood": "Wicker Park",
     "alias": [
       "nicks"
-    ]
+    ],
+    "neighborhood": "Wicker Park"
   },
   {
     "name": "wrightwood tap",
-    "location": {
-      "lng": -87.655936,
-      "lat": 41.9287149
-    },
     "url": "http://www.yelp.com/biz/wrightwood-tap-chicago",
     "street": "1059 W Wrightwood Ave",
-    "neighborhood": "Lincoln Park",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Lincoln Park"
   },
   {
     "name": "swig",
-    "location": {
-      "lng": -87.674376,
-      "lat": 41.908743
-    },
     "url": "http://www.yelp.com/biz/swig-chicago",
     "street": "1469 N Milwaukee Ave",
-    "neighborhood": "Wicker Park",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Wicker Park"
   },
   {
     "name": "rite liquor",
-    "location": {
-      "lng": -87.6691082,
-      "lat": 41.9032941
-    },
     "url": "http://www.yelp.com/biz/rite-liquors-chicago",
     "street": "1649 W Division St",
-    "neighborhood": "Ukrainian Village",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Ukrainian Village"
   },
   {
     "name": "lottie's pub",
-    "location": {
-      "lng": -87.6762088,
-      "lat": 41.9158273
-    },
     "url": "http://www.yelp.com/biz/lotties-pub-chicago-3",
     "street": "1925 W Cortland St",
-    "neighborhood": "Bucktown",
     "alias": [
       "lotties"
-    ]
+    ],
+    "neighborhood": "Bucktown"
   },
   {
     "name": "tuman's restaurant",
-    "location": {
-      "lng": -87.6818,
-      "lat": 41.895529
-    },
     "url": "http://www.yelp.com/biz/tumans-restaurant-chicago",
     "street": "2159 W Chicago Ave",
-    "neighborhood": "Ukrainian Village",
     "alias": [
       "tuman's"
-    ]
+    ],
+    "neighborhood": "Ukrainian Village"
   },
   {
     "name": "rodan",
-    "location": {
-      "lng": -87.6758116,
-      "lat": 41.9093039
-    },
     "url": "http://www.yelp.com/biz/rodan-chicago",
     "street": "1530 N Milwaukee Ave",
-    "neighborhood": "Wicker Park",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Wicker Park"
   },
   {
     "name": "cork lounge",
-    "location": {
-      "lng": -87.6748835,
-      "lat": 41.9470703
-    },
     "url": "http://www.yelp.com/biz/cork-lounge-chicago",
     "street": "1822 W Addison St",
-    "neighborhood": "North Center",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "North Center"
   },
   {
     "name": "lange's lounge",
-    "location": {
-      "lng": -87.664177,
-      "lat": 41.945392
-    },
     "url": "http://www.yelp.com/biz/langes-lounge-chicago",
     "street": "3500 N Southport Ave",
-    "neighborhood": "Lakeview",
     "alias": [
       "lange's"
-    ]
+    ],
+    "neighborhood": "Lakeview"
   },
   {
     "name": "fireside bowl",
-    "location": {
-      "lng": -87.6944271,
-      "lat": 41.9249689
-    },
     "url": "http://www.yelp.com/biz/fireside-bowl-chicago",
     "street": "2648 W Fullerton Ave",
-    "neighborhood": "Logan Square",
     "alias": [
       "fireside"
-    ]
+    ],
+    "neighborhood": "Logan Square"
   },
   {
     "name": "easy bar",
-    "location": {
-      "lng": -87.676624,
-      "lat": 41.9035129
-    },
     "url": "http://www.yelp.com/biz/easy-bar-chicago",
     "street": "1944 W Division St",
-    "neighborhood": "Wicker Park",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Wicker Park"
   },
   {
     "name": "soapy's place",
-    "location": {
-      "lng": -87.6675045,
-      "lat": 41.9078693
-    },
     "url": "http://www.yelp.com/biz/soapys-place-chicago",
     "street": "1429 N Ashland Avenue",
-    "neighborhood": "Wicker Park",
     "alias": [
       "soapy's landromat",
       "soapy's"
-    ]
+    ],
+    "neighborhood": "Wicker Park"
   },
   {
     "name": "zakopane",
-    "location": {
-      "lng": -87.671321,
-      "lat": 41.903556
-    },
     "url": "http://www.yelp.com/biz/zakopane-chicago",
     "street": "1734 W Division St",
-    "neighborhood": "Wicker Park",
     "alias": [
 
-    ]
+    ],
+    "neighborhood": "Wicker Park"
   }
 ]
