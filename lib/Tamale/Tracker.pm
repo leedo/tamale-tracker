@@ -182,18 +182,14 @@ sub get_older_tweets {
   my $self = shift;
   log_debug("looking for older tweets");
   while (my @tweets = $self->download_tweets(max_id => $self->max_id)) {
-    log_debug(" => got ".scalar @tweets." new tweets");
+    log_debug(" ↳ got ".scalar @tweets." new tweets");
     for my $status (@tweets) {
       my $orig = $self->find_original_tweet($status);
       if ($orig) {
-        log_debug("  => found original tweet for: \"$status->{text}\"");
         $status->{created_at} = $orig->{created_at};
-      } else {
-        log_debug("  => could not find original tweet for: \"$status->{text}\"");
       }
       $self->add_tweet($status->{id}, $status->{text}, $status->{created_at}, !!$orig);
     }
-    sleep $self->request_delay;
   }
 }
 
@@ -201,18 +197,14 @@ sub get_newer_tweets {
   my $self = shift;
   log_debug("looking for newer tweets");
   while (my @tweets = $self->download_tweets(since_id => $self->newest)) {
-    log_debug(" => got ".scalar @tweets." new tweets");
+    log_debug(" ↳ got ".scalar @tweets." new tweets");
     for my $status (@tweets) {
       my $orig = $self->find_original_tweet($status);
       if ($orig) {
-        log_debug("  => found original tweet for: \"$status->{text}\"");
         $status->{created_at} = $orig->{created_at};
-      } else {
-        log_debug("  => could not find original tweet for: \"$status->{text}\"");
       }
       $self->add_tweet($status->{id}, $status->{text}, $status->{created_at}, !!$orig);
     }
-    sleep $self->request_delay;
   }
 }
 
@@ -227,21 +219,33 @@ sub find_original_tweet {
   my ($self, $retweet) = @_;
 
   my $max_id = $retweet->{id};
-  my $userid = $self->userid;
-  my $re = qr/\@$userid/i;
+  my $re = qr/\@$retweet->{user}{screen_name}/i;
   my ($orig_tweeter) = ($retweet->{text} =~ /~\@(\S+)\b/);
+  my $retweet_date = DateTime->from_epoch(epoch => str2time($retweet->{created_at}));
+  my $max_age = $retweet_date - DateTime::Duration->new(days => 4);
 
   return () unless $orig_tweeter;
 
+  log_debug("  ↳ searching $orig_tweeter for \"$retweet->{text}\"");
+
   while (my @tweets = $self->download_tweets(max_id => $max_id, screen_name => $orig_tweeter)) {
+    log_debug("   ↳ found ".scalar @tweets." for max_id: $max_id");
     for my $tweet (@tweets) {
       if ($tweet->{text} =~ $re) {
+        log_debug("    ↳ found original tweet!");
         return $tweet;
       }
-      $max_id = $tweet->{id} if $tweet->{id} < $max_id;
+      if ($tweet->{id} < $max_id) {
+        my $orig_date = DateTime->from_epoch(epoch => str2time($tweet->{created_at}));
+        if ($orig_date < $max_age) {
+          log_debug("   ↳ looked back 4 days and found nothing... giving up");
+          return ();
+        }
+        $max_id = $tweet->{id};
+      }
     }
-    sleep $self->request_delay;
   }
+  log_debug("   ↳ could not find original tweet :(");
 
   return ();
 }
@@ -281,14 +285,16 @@ sub download_tweets {
 
   # 3 retries and then give up
   for (0 .. 3) { 
+    sleep $self->request_delay;
     my $statuses = eval {$self->twitter->user_timeline(\%filter)};
+
     if (!$@) {
       return @$statuses;
     }
+
     die $@ if $@ =~ /rate limit exceeded/i;
     return () if $@ =~ /not authorized/i;
     warn "retrying: $@\n";
-    sleep $self->request_delay;
   }
 
   die "could not connect to twitter\n";
