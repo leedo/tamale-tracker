@@ -21,6 +21,8 @@ my $tracker = Tamale::Tracker->new(
   datadir  => "$FindBin::Bin/../data",
   username => $opt{username},
   password => $opt{password},
+  request_delay => 30,
+  debug    => 1,
 );
 
 $tracker->get_missing_tweets;

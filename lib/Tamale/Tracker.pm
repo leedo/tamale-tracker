@@ -1,5 +1,8 @@
 package Tamale::Tracker;
 
+use strict;
+use warnings;
+
 use Any::Moose;
 use Tamale::Tracker::Util qw/levenshtein_distance clean_name/;
 use Net::Twitter::Lite;
@@ -9,6 +12,13 @@ use Storable qw/freeze thaw/;
 use DateTime;
 use JSON;
 use DBI;
+
+my $debug = 0;
+
+sub log_debug {
+  return unless $debug;
+  print STDERR "$_\n" for @_;
+}
 
 has datadir => (
   is => 'ro',
@@ -28,6 +38,16 @@ has twitter => (
     );
   }
 );
+
+has debug => (
+  is => 'ro',
+  default => 0,
+);
+
+sub BUILD {
+  my $self = shift;
+  $debug = 1 if $self->debug;
+}
 
 has username => (is => 'ro');
 has password => (is => 'ro');
@@ -55,7 +75,7 @@ has dbh => (
     my $dbh = DBI->connect("dbi:SQLite:dbname=".$self->dbfile,"","");
 
     if ($create) {
-      $dbh->do("CREATE TABLE updates (date VARCHAR(32), id INT, body TEXT)");
+      $dbh->do("CREATE TABLE updates (date VARCHAR(32), id INT, body TEXT, is_real_time BOOLEAN)");
     }
 
     return $dbh;
@@ -87,14 +107,14 @@ sub write_cache {
 
 sub DESTROY {
   my $self = shift;
-  $self->write_cache;
+  $self->write_cache if $self->{cache};
 }
 
 has insert_sth => (
   is => 'ro',
   lazy => 1,
   default => sub {
-    $_[0]->dbh->prepare("INSERT INTO updates (id, body, date) VALUES (?, ?, ?)");
+    $_[0]->dbh->prepare("INSERT INTO updates (id, body, date, is_real_time) VALUES (?, ?, ?, ?)");
   }
 );
 
@@ -120,7 +140,7 @@ has newest => (
 
 has request_delay => (
   is => 'ro',
-  default => 2,
+  default => 3,
 );
 
 has bars => (
@@ -158,34 +178,72 @@ sub get_missing_tweets {
   $self->get_older_tweets;
 }
 
-sub get_newer_tweets {
-  my $self = shift;
-  print STDERR "looking for older tweets\n";
-  while (my @tweets = $self->download_tweets(max_id => $self->max_id)) {
-    print STDERR " => got ".scalar @tweets." new tweets\n";
-    for my $status (@tweets) {
-      $self->add_tweet($status->{id}, $status->{text}, $status->{created_at});
-    }
-    sleep $self->request_delay;
-  }
-}
-
 sub get_older_tweets {
   my $self = shift;
-  print STDERR "looking for newer tweets\n";
-  while (my @tweets = $self->download_tweets(since_id => $self->newest)) {
-    print STDERR "got ".scalar @tweets." new tweets\n";
+  log_debug("looking for older tweets");
+  while (my @tweets = $self->download_tweets(max_id => $self->max_id)) {
+    log_debug(" => got ".scalar @tweets." new tweets");
     for my $status (@tweets) {
-      $self->add_tweet($status->{id}, $status->{text}, $status->{created_at});
+      my $orig = $self->find_original_tweet($status);
+      if ($orig) {
+        log_debug("  => found original tweet for: \"$status->{text}\"");
+        $status->{created_at} = $orig->{created_at};
+      } else {
+        log_debug("  => could not find original tweet for: \"$status->{text}\"");
+      }
+      $self->add_tweet($status->{id}, $status->{text}, $status->{created_at}, !!$orig);
     }
     sleep $self->request_delay;
   }
 }
 
+sub get_newer_tweets {
+  my $self = shift;
+  log_debug("looking for newer tweets");
+  while (my @tweets = $self->download_tweets(since_id => $self->newest)) {
+    log_debug(" => got ".scalar @tweets." new tweets");
+    for my $status (@tweets) {
+      my $orig = $self->find_original_tweet($status);
+      if ($orig) {
+        log_debug("  => found original tweet for: \"$status->{text}\"");
+        $status->{created_at} = $orig->{created_at};
+      } else {
+        log_debug("  => could not find original tweet for: \"$status->{text}\"");
+      }
+      $self->add_tweet($status->{id}, $status->{text}, $status->{created_at}, !!$orig);
+    }
+    sleep $self->request_delay;
+  }
+}
+
+
 sub add_tweet {
-  my ($self, $id, $text, $created) = @_;
-  $self->insert_sth->execute($id, $text, $created);
+  my ($self, $id, $text, $created, $is_orig) = @_;
+  $self->insert_sth->execute($id, $text, $created, $is_orig);
   $self->update_boundaries($id);
+}
+
+sub find_original_tweet {
+  my ($self, $retweet) = @_;
+
+  my $max_id = $retweet->{id};
+  my $userid = $self->userid;
+  my $re = qr/\@$userid/i;
+  my ($orig_tweeter) = ($retweet->{text} =~ /~\@(\S+)\b/);
+
+  return () unless $orig_tweeter;
+
+  while (my @tweets = $self->download_tweets(max_id => $max_id, screen_name => $orig_tweeter)) {
+    for my $tweet (@tweets) {
+      if ($tweet->{text} =~ $re) {
+        return $tweet;
+      }
+      $max_id = $tweet->{id} if $tweet->{id} < $max_id;
+    }
+    sleep $self->request_delay;
+  }
+
+  return ();
 }
 
 sub closest_bar {
@@ -213,10 +271,13 @@ sub closest_bar {
 
 sub download_tweets {
   my ($self, %filter) = @_;
-  $filter{screen_name} = $self->userid;
+  $filter{screen_name} = $self->userid
+    unless $filter{screen_name};
 
   # remove filters that are set to undef
-  %filter = map {$_ => $filter{$_}} grep {$filter{$_}} keys %filter;
+  %filter = map {$_ => $filter{$_}}
+            grep {$filter{$_}}
+            keys %filter;
 
   # 3 retries and then give up
   for (0 .. 3) { 
@@ -224,7 +285,10 @@ sub download_tweets {
     if (!$@) {
       return @$statuses;
     }
+    die $@ if $@ =~ /rate limit exceeded/i;
+    return () if $@ =~ /not authorized/i;
     warn "retrying: $@\n";
+    sleep $self->request_delay;
   }
 
   die "could not connect to twitter\n";
@@ -239,7 +303,7 @@ sub matching_tweets {
   my @matches;
 
   while(my $row = $sth->fetchrow_arrayref) {
-    if ($row->[2] =~ /\b(?:at|left|into|leaving) ([a-z][^~\.!@;,1-9()\-]+)/i) {
+    if ($row->[2] =~ /\b(?:at|left|into|leaving|\@) ([a-z][^~\.!@;,1-9()\-]+)/i) {
       my $bar = lc $1;
 
       # skip if it ends with a ? or is begging
