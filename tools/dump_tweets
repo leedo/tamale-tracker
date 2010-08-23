@@ -11,6 +11,7 @@ my %opt;
 GetOptions (
   "username=s" => \$opt{username},
   "password=s" => \$opt{password},
+  "delay=i"    => \$opt{delay},
 );
 
 if (!$opt{username} or !$opt{password}) {
@@ -21,7 +22,7 @@ my $tracker = Tamale::Tracker->new(
   datadir  => "$FindBin::Bin/../data",
   username => $opt{username},
   password => $opt{password},
-  request_delay => 30,
+  request_delay => $opt{delay} || 30,
   debug    => 1,
 );
 
