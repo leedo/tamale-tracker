@@ -294,6 +294,7 @@ sub download_tweets {
 
     die $@ if $@ =~ /rate limit exceeded/i;
     return () if $@ =~ /not authorized/i;
+    return () if $@ =~ /not found/i;
     warn "retrying: $@\n";
   }
 
